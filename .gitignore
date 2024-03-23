@@ -136,3 +136,12 @@ fabric.properties
 /.idea/copilot/chatSessions/blobs/version
 /.idea/copilot/chatSessions/00000000000.xd
 /.idea/copilot/chatSessions/xd.lck
+
+certificates
+
+### Serwist
+**/public/serwist**
+**/public/sw**
+**/public/worker**
+**/public/fallback**
+**/public/precache**
