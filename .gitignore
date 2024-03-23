@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+dist
 
 ### yarn template
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
