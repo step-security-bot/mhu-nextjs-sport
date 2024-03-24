@@ -45,5 +45,25 @@ export default function manifest(): MetadataRoute.Manifest {
         label: 'Főoldal',
       },
     ],
+    shortcuts: [
+      {
+        name: 'Eredmények megtekintése',
+        short_name: 'Eredmények',
+        description: 'Eredmények megtekintése az eseményen',
+        url: '/eredmenyek?utm_source=homescreen',
+      },
+      {
+        name: 'Programok megtekintése',
+        short_name: 'Programok',
+        description: 'Programok megtekintése az eseményen',
+        url: '/programok?utm_source=homescreen',
+      },
+      {
+        name: 'Helyszínek megtekintése',
+        short_name: 'Helyszínek',
+        description: 'Helyszínek megtekintése az eseményen',
+        url: '/helyszinek?utm_source=homescreen',
+      },
+    ],
   };
 }

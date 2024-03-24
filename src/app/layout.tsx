@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: APP_TITLE_TEMPLATE,
   },
   description: APP_DESCRIPTION,
+  creator: '@alexaka1',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -30,6 +31,20 @@ export const metadata: Metadata = {
       template: APP_TITLE_TEMPLATE,
     },
     description: APP_DESCRIPTION,
+    images: [
+      {
+        url: 'https://sport.martossy.hu//screenshots/landing-desktop.webp',
+        height: 1884,
+        width: 1042,
+      },
+      {
+        url: 'https://sport.martossy.hu//screenshots/landing-mobile.webp',
+        height: 944,
+        width: 1169,
+      },
+    ],
+    locale: 'hu_HU',
+    url: 'https://sport.martossy.hu/',
   },
   twitter: {
     card: 'summary',
@@ -38,6 +53,10 @@ export const metadata: Metadata = {
       template: APP_TITLE_TEMPLATE,
     },
     description: APP_DESCRIPTION,
+    images: [
+      'https://sport.martossy.hu//screenshots/landing-desktop.webp',
+      'https://sport.martossy.hu//screenshots/landing-mobile.webp',
+    ],
   },
 };
 
