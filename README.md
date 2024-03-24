@@ -1,4 +1,4 @@
-[![CodeQL](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/codeql.yml)[![OSSF](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/scorecard.yml/badge.svg)](https://github.com/alexaka1/mhu-nextjs-sport/actions/workflows/scorecard.yml)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
