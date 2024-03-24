@@ -27,5 +27,23 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait-primary',
+    screenshots: [
+      {
+        src: '/screenshots/landing-desktop.webp',
+        sizes: '1884x1042',
+        type: 'image/webp',
+        // @ts-expect-error until Next officially supports it
+        form_factor: 'wide',
+        label: 'Főoldal',
+      },
+      {
+        src: '/screenshots/landing-mobile.webp',
+        sizes: '944x1169',
+        type: 'image/webp',
+        // @ts-expect-error until Next officially supports it
+        form_factor: 'narrow',
+        label: 'Főoldal',
+      },
+    ],
   };
 }
