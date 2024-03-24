@@ -46,7 +46,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="hu" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="32x32" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
