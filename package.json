@@ -49,5 +49,11 @@
     "eslint@8.57.0": {
       "unplugged": true
     }
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "yarn": ">=4.1.1",
+    "npm": "Please use Yarn to install dependencies. 'yarn install'"
   }
 }

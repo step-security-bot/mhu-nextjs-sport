@@ -145,3 +145,5 @@ certificates
 **/public/worker**
 **/public/fallback**
 **/public/precache**
+### dotenv template
+.env
