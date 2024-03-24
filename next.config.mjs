@@ -8,7 +8,6 @@ const nextConfig = {
 const withSerwist = withSerwistInit({
   swSrc: "src/app/lib/sw.ts",
   swDest: "public/sw.js",
-  disable: true,
 });
 
 export default withSerwist(nextConfig);
