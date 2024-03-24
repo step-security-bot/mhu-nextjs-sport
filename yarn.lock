@@ -1497,6 +1497,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"colorjs.io@npm:^0.4.5":
+  version: 0.4.5
+  resolution: "colorjs.io@npm:0.4.5"
+  checksum: 10/0860f31e62a25d1df53d776797c632f7debe880a3c73193025df5359e70b7d72f0ba6932c12ac1486e70367228ee2ef8c1f20a7ba6a2cb6ff35b6b9eb4deede6
+  languageName: node
+  linkType: hard
+
 "commander@npm:^4.0.0":
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
@@ -3435,6 +3442,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     tailwindcss: "npm:^3.4.1"
+    tailwindcss-oklch: "npm:^0.0.1"
     typescript: "npm:^5.4.3"
   dependenciesMeta:
     eslint@8.57.0:
@@ -5106,6 +5114,15 @@ __metadata:
   bin:
     svgo: ./bin/svgo
   checksum: 10/2fdf3f2090e17b3c309e60f69c78a2afd5a9771247adb540bae3fce467243f7a601a2a5497ef40998292da41ad828b3eabf3c18b75bf449c2d2cbf6d7f6e96d9
+  languageName: node
+  linkType: hard
+
+"tailwindcss-oklch@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "tailwindcss-oklch@npm:0.0.1"
+  dependencies:
+    colorjs.io: "npm:^0.4.5"
+  checksum: 10/272fed48008e977905562fbfc665461e91144168cb8b37bcbd3fd236bcb01e4888397bfc3b6e29d0d98c0dfdd06d12b02a0d2259cc4b6fb523fc4dd758ee294d
   languageName: node
   linkType: hard
 

@@ -42,6 +42,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.4.1",
+    "tailwindcss-oklch": "^0.0.1",
     "typescript": "^5.4.3"
   },
   "dependenciesMeta": {
