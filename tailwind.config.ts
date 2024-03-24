@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import typography from '@tailwindcss/typography';
 
-const config: Config = {
+const config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          default: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
+          DEFAULT: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
           800: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
           600: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
           400: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
@@ -23,14 +23,14 @@ const config: Config = {
           green: 'oklch(48.74% 0.184 20.24 / <alpha-value>)',
         },
         secondary: {
-          default: 'oklch(41.85% 0.1658 25.77 / <alpha-value>)',
+          DEFAULT: 'oklch(41.85% 0.1658 25.77 / <alpha-value>)',
           800: 'oklch(32.5% 0.129 25.77 / <alpha-value>)',
           600: 'oklch(41.85% 0.1658 25.77 / <alpha-value>)',
           400: 'oklch(66.5% 0.216 25.77 / <alpha-value>)',
           200: 'oklch(83.2% 0.085 25.77 / <alpha-value>)',
         },
         accent: {
-          default: 'oklch(47.01% 0.1653 18.33 / <alpha-value>)',
+          DEFAULT: 'oklch(47.01% 0.1653 18.33 / <alpha-value>)',
           800: 'oklch(32.5% 0.115 18.33 / <alpha-value>)',
           600: 'oklch(47.01% 0.1653 18.33 / <alpha-value>)',
           400: 'oklch(66.5% 0.196 18.33 / <alpha-value>)',
@@ -48,5 +48,5 @@ const config: Config = {
     },
   },
   plugins: [typography, require('tailwindcss-oklch')()],
-};
+} satisfies Config;
 export default config;

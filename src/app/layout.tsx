@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import { ReactNode } from 'react';
 import './globals.css';
 import { APP_DEFAULT_TITLE, APP_DESCRIPTION, APP_NAME, APP_TITLE_TEMPLATE } from './manifest';
+import Footer from '@/app/ui/footer';
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -55,7 +56,10 @@ export default function RootLayout({
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#650e1d" />
         <meta name="theme-color" content="#650e1d" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
