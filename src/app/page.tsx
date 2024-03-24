@@ -22,7 +22,7 @@ export default function Home() {
         }}
         priority={true}
       />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-svh flex-col items-center justify-between p-4 md:p-24">
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex"></div>
 
         <div className="z-10 text-balance rounded-xl p-8 text-center drop-shadow-lg bg-accent-800/95">
@@ -31,7 +31,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="mb-32 grid rounded-lg text-center bg-primary/95 xl:mb-0 xl:w-full xl:max-w-6xl xl:grid-cols-5 xl:text-left">
+        <div className="bg-primary/95 grid rounded-lg text-center md:mb-32 xl:mb-0 xl:w-full xl:max-w-6xl xl:grid-cols-5 xl:text-left">
           <LandingLink href={`/sportagak`}>
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Sportágak{' '}
