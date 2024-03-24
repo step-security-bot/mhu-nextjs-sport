@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export const APP_NAME = 'Ügyészségi sporttalálkozó';
 export const APP_DEFAULT_TITLE = 'Ügyészségi sporttalálkozó';
-export const APP_TITLE_TEMPLATE = '%s - Ügyészségi sporttalálkozó';
-export const APP_DESCRIPTION = 'Szabolcs-Szatmár-Bereg vármegyei ügyészségi sporttalálkozó';
+export const APP_TITLE_TEMPLATE = '%s | Ügyészségi sporttalálkozó';
+export const APP_DESCRIPTION = 'Ügyészségi sporttalálkozó weboldala.';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {

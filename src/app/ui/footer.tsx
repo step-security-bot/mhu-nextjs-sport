@@ -1,18 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faXTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-white dark:bg-gray-900">
+    <footer className="mt-auto bg-gray-50 dark:bg-gray-900">
       <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className="prose text-bg-contrast">
-            Ez a weboldal egy hobbi projekt keretében készült. Nem hivatalos. Nem kapcsolódik semmilyen hivatalos
-            szervezethez. A forráskód elérhető a GitHub-on.
+          <div className={`flex flex-col items-start gap-2`}>
+            <a
+              className="pointer-events-none flex place-items-center gap-2 p-8 text-bg-contrast lg:pointer-events-auto lg:p-0"
+              href="https://vercel.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hosztolva a <Image src="/vercel.svg" alt="Vercel Logó" className="dark:invert" width={100} height={24} />{' '}
+              -en.
+            </a>
+            <p className="prose text-balance text-bg-contrast">
+              Ez a weboldal egy hobbi projekt keretében készült. Nem hivatalos. Nem kapcsolódik semmilyen hivatalos
+              szervezethez. A forráskód elérhető a GitHub-on.
+            </p>
           </div>
 
-          <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
+          <ul className="mt-8 flex flex-wrap justify-center gap-6 sm:mt-0 sm:flex-nowrap sm:justify-end">
             <li>
               <a
                 href="https://www.facebook.com/Magyarorsz%C3%A1g-%C3%9Cgy%C3%A9szs%C3%A9ge-104594918109266"
@@ -104,7 +116,10 @@ export default function Footer() {
           {/*</div>*/}
         </div>
 
-        <p className="prose text-xs text-bg-contrast">&copy; 2024. Martossy Alex Márk. Minden jog fenntartva.</p>
+        <p className="prose whitespace-nowrap text-balance text-xs text-bg-contrast">
+          &copy; 2024. <span className="inline-block max-w-full text-balance">Martossy Alex Márk.</span> Minden jog
+          fenntartva.
+        </p>
       </div>
     </footer>
   );
