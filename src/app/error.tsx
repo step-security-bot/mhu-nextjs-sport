@@ -17,7 +17,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         </h1>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <button
-            className={`bg-primary rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm text-bg-contrast hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`}
+            className={`rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm bg-primary text-bg-contrast hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600`}
             onClick={
               // Attempt to recover by trying to re-render the segment
               () => reset()

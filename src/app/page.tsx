@@ -31,7 +31,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="bg-primary/95 mb-32 grid rounded-lg text-center xl:mb-0 xl:w-full xl:max-w-6xl xl:grid-cols-5 xl:text-left">
+        <div className="mb-32 grid rounded-lg text-center bg-primary/95 xl:mb-0 xl:w-full xl:max-w-6xl xl:grid-cols-5 xl:text-left">
           <LandingLink href={`/sportagak`}>
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Sportágak{' '}

@@ -5,7 +5,7 @@ export default function NotFound() {
     <>
       <main className="grid min-h-full grow place-items-center px-6 py-24 bg-white sm:py-32 lg:px-8 dark:bg-gray-950">
         <div className="text-center">
-          <p className="text-secondary font-mono text-base font-semibold dark:text-secondary-400">404</p>
+          <p className="font-mono text-base font-semibold text-secondary dark:text-secondary-400">404</p>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-bg-contrast">
             Az oldal nem található
           </h1>

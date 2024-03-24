@@ -30,7 +30,7 @@ export default function Footer() {
                 href="https://www.facebook.com/Magyarorsz%C3%A1g-%C3%9Cgy%C3%A9szs%C3%A9ge-104594918109266"
                 rel="noreferrer"
                 target="_blank"
-                className="text-primary transition hover:opacity-75 dark:text-bg-contrast"
+                className="transition text-primary hover:opacity-75 dark:text-bg-contrast"
               >
                 <span className="sr-only">Facebook</span>
 
@@ -43,7 +43,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@MagyarorszagUgyeszsege"
                 rel="noreferrer"
                 target="_blank"
-                className="text-primary transition hover:opacity-75 dark:text-bg-contrast"
+                className="transition text-primary hover:opacity-75 dark:text-bg-contrast"
               >
                 <span className="sr-only">YouTube</span>
                 <FontAwesomeIcon icon={faYoutube} height={24} width={24} />
@@ -55,7 +55,7 @@ export default function Footer() {
                 href="https://twitter.com/ProsecutionHu"
                 rel="noreferrer"
                 target="_blank"
-                className="text-primary transition hover:opacity-75 dark:text-bg-contrast"
+                className="transition text-primary hover:opacity-75 dark:text-bg-contrast"
               >
                 <span className="sr-only">X</span>
 
@@ -68,7 +68,7 @@ export default function Footer() {
                 href="https://github.com/alexaka1/mhu-nextjs-sport"
                 rel="noreferrer"
                 target="_blank"
-                className="text-primary transition hover:opacity-75 dark:text-bg-contrast"
+                className="transition text-primary hover:opacity-75 dark:text-bg-contrast"
               >
                 <span className="sr-only">GitHub</span>
 
