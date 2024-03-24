@@ -56,7 +56,7 @@ export default function RootLayout({
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#650e1d" />
         <meta name="theme-color" content="#650e1d" />
       </head>
-      <body>
+      <body className={`flex min-h-svh flex-col`}>
         {children}
         <Footer />
       </body>
