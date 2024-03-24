@@ -51,18 +51,21 @@ export default function manifest(): MetadataRoute.Manifest {
         short_name: 'Eredmények',
         description: 'Eredmények megtekintése az eseményen',
         url: '/eredmenyek?utm_source=homescreen',
+        icons: [{ src: '/icons/report-analytics.svg' }],
       },
       {
         name: 'Programok megtekintése',
         short_name: 'Programok',
         description: 'Programok megtekintése az eseményen',
         url: '/programok?utm_source=homescreen',
+        icons: [{ src: '/icons/calendar.svg' }],
       },
       {
         name: 'Helyszínek megtekintése',
         short_name: 'Helyszínek',
         description: 'Helyszínek megtekintése az eseményen',
         url: '/helyszinek?utm_source=homescreen',
+        icons: [{ src: '/icons/soccer-field.svg' }],
       },
     ],
   };
