@@ -15,8 +15,8 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Hosztolva a <Image src="/vercel.svg" alt="Vercel Logó" className="dark:invert" width={100} height={24} />{' '}
-              -en.
+              <Image src="/vercel.svg" alt="Vercel Logó" className="dark:invert" width={100} height={24} /> -en
+              hosztolva.
             </a>
             <p className="prose text-balance text-bg-contrast">
               Ez a weboldal egy hobbi projekt keretében készült. Nem hivatalos. Nem kapcsolódik semmilyen hivatalos
