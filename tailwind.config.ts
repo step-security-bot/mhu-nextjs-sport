@@ -14,9 +14,9 @@ const config = {
         primary: {
           DEFAULT: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
           800: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
-          600: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
-          400: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
-          200: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
+          600: 'oklch(49.99% 0.183 18.06 / <alpha-value>)',
+          400: 'oklch(67.31% 0.1949 18.81 / <alpha-value>)',
+          200: 'oklch(83.46% 0.0802 20.19 / <alpha-value>)',
         },
         hun: {
           red: 'oklch(33.14% 0.1186 18.15 / <alpha-value>)',
