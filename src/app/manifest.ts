@@ -64,7 +64,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: 'Eredmények megtekintése',
         short_name: 'Eredmények',
-        description: 'Eredmények megtekintése az eseményen',
+        description: 'Eredmények megtekintése',
         url: '/eredmenyek?utm_source=homescreen',
         icons: [
           {
@@ -81,13 +81,13 @@ export default function manifest(): MetadataRoute.Manifest {
         url: '/programok?utm_source=homescreen',
         icons: [{ src: '/icons/calendar.svg', sizes: '96x96', type: 'image/svg+xml' }],
       },
-      {
-        name: 'Helyszínek megtekintése',
-        short_name: 'Helyszínek',
-        description: 'Helyszínek megtekintése az eseményen',
-        url: '/helyszinek?utm_source=homescreen',
-        icons: [{ src: '/icons/soccer-field.svg', sizes: '96x96', type: 'image/svg+xml' }],
-      },
+      // {
+      //   name: 'Helyszínek megtekintése',
+      //   short_name: 'Helyszínek',
+      //   description: 'Helyszínek megtekintése az eseményen',
+      //   url: '/helyszinek?utm_source=homescreen',
+      //   icons: [{ src: '/icons/soccer-field.svg', sizes: '96x96', type: 'image/svg+xml' }],
+      // },
     ],
   };
 }
