@@ -10,20 +10,23 @@ export default function manifest(): MetadataRoute.Manifest {
     name: APP_NAME,
     short_name: APP_DEFAULT_TITLE,
     description: APP_DESCRIPTION,
+    id: '/?source=pwa',
+    start_url: '/?source=pwa',
+    scope: '/',
     icons: [
       {
         sizes: '1024x1024',
         src: '/favicon/maskable_icon.png',
         type: 'image/png',
         // @ts-expect-error until Next officially supports it
-        purpose: 'any maskable monochrome',
+        purpose: 'any maskable',
       },
       {
         sizes: '512x512',
         src: '/favicon/maskable_icon_x512.png',
         type: 'image/png',
         // @ts-expect-error until Next officially supports it
-        purpose: 'any maskable monochrome',
+        purpose: 'any maskable',
       },
       {
         sizes: '192x192',
@@ -33,12 +36,11 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         sizes: 'any',
         src: '/favicon.svg',
-        purpose: 'any',
+        purpose: 'monochrome',
       },
     ],
     theme_color: '#650e1d',
     background_color: '#650e1d',
-    start_url: '/',
     display_override: ['standalone', 'fullscreen', 'minimal-ui', 'browser'],
     display: 'standalone',
     orientation: 'portrait-primary',
@@ -81,13 +83,13 @@ export default function manifest(): MetadataRoute.Manifest {
         url: '/programok?utm_source=homescreen',
         icons: [{ src: '/icons/calendar.svg', sizes: '96x96', type: 'image/svg+xml' }],
       },
-      // {
-      //   name: 'Helyszínek megtekintése',
-      //   short_name: 'Helyszínek',
-      //   description: 'Helyszínek megtekintése az eseményen',
-      //   url: '/helyszinek?utm_source=homescreen',
-      //   icons: [{ src: '/icons/soccer-field.svg', sizes: '96x96', type: 'image/svg+xml' }],
-      // },
+      {
+        name: 'Helyszínek megtekintése',
+        short_name: 'Helyszínek',
+        description: 'Helyszínek megtekintése az eseményen',
+        url: '/helyszinek?utm_source=homescreen',
+        icons: [{ src: '/icons/soccer-field.svg', sizes: '96x96', type: 'image/svg+xml' }],
+      },
     ],
   };
 }
