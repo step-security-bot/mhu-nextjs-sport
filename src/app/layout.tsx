@@ -33,12 +33,12 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
     images: [
       {
-        url: 'https://sport.martossy.hu//screenshots/landing-desktop.webp',
+        url: 'https://sport.martossy.hu/screenshots/landing-desktop.webp',
         height: 1884,
         width: 1042,
       },
       {
-        url: 'https://sport.martossy.hu//screenshots/landing-mobile.webp',
+        url: 'https://sport.martossy.hu/screenshots/landing-mobile.webp',
         height: 944,
         width: 1169,
       },
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     },
     description: APP_DESCRIPTION,
     images: [
-      'https://sport.martossy.hu//screenshots/landing-desktop.webp',
-      'https://sport.martossy.hu//screenshots/landing-mobile.webp',
+      'https://sport.martossy.hu/screenshots/landing-desktop.webp',
+      'https://sport.martossy.hu/screenshots/landing-mobile.webp',
     ],
   },
 };
