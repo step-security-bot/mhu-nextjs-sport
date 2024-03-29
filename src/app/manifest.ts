@@ -54,12 +54,36 @@ export default function manifest(): MetadataRoute.Manifest {
         label: 'Főoldal',
       },
       {
+        src: '/screenshots/greetings-desktop.webp',
+        sizes: '1062x642',
+        type: 'image/webp',
+        // @ts-expect-error until Next officially supports it
+        form_factor: 'wide',
+        label: 'Köszöntő',
+      },
+      {
         src: '/screenshots/landing-mobile.webp',
         sizes: '944x1169',
         type: 'image/webp',
         // @ts-expect-error until Next officially supports it
         form_factor: 'narrow',
         label: 'Főoldal',
+      },
+      {
+        src: '/screenshots/greeting-mobile.webp',
+        sizes: '721x1601',
+        type: 'image/webp',
+        // @ts-expect-error until Next officially supports it
+        form_factor: 'narrow',
+        label: 'Köszöntő',
+      },
+      {
+        src: '/screenshots/menus-mobile.webp',
+        sizes: '721x1601',
+        type: 'image/webp',
+        // @ts-expect-error until Next officially supports it
+        form_factor: 'narrow',
+        label: 'Menü',
       },
     ],
     shortcuts: [

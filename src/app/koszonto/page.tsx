@@ -18,14 +18,16 @@ export default function Home() {
         <section className="grid overflow-hidden rounded-lg bg-primary-800/95 md:grid-cols-2">
           <div className="p-4 pb-0 md:flex md:items-center md:p-12 lg:px-16 lg:py-24">
             <div className="prose mx-auto max-w-xl text-balance text-center md:text-left rtl:md:text-right">
-              <h2 className="text-2xl font-bold text-bg-contrast md:text-3xl xl:text-5xl">Kedves Látogató!</h2>
+              <h2 className="text-2xl font-bold capitalize text-bg-contrast md:text-3xl xl:text-5xl">
+                Kedves látogató!
+              </h2>
 
               <blockquote className={`prose hyphens-auto italic text-bg-contrast xl:text-3xl`}>
                 <p className="md:mt-4">
-                  Idén negyvenkettedik alkalommal kerül megrendezésre a Regionális Ügyészségi Sporttalálkozó. 2024.
-                  június 28-29-én a Szabolcs-Szatmár-Bereg Vármegyei Főügyészség látja vendégül a Kelet-Magyarországi
-                  vármegyék csapatait. Az esemény a Nyíregyházi Egyetem sportpályáin és kollégiumaiban kerül
-                  megrendezésre.
+                  Idén negyvenkettedik alkalommal kerül megrendezésre a{' '}
+                  <span className={`font-bold capitalize`}>Regionális ügyészségi sporttalálkozó</span>. 2024. június
+                  28-29-én a Szabolcs-Szatmár-Bereg Vármegyei Főügyészség látja vendégül a Kelet-Magyarországi vármegyék
+                  csapatait. Az esemény a Nyíregyházi Egyetem sportpályáin és kollégiumaiban kerül megrendezésre.
                 </p>
                 <p className="md:mt-4">
                   A résztvevőknek jó sportolást és kellemes időtöltést kívánok! Bízom benne, hogy maradandó szép
@@ -34,7 +36,7 @@ export default function Home() {
               </blockquote>
 
               <p className="hidden text-xl font-semibold text-bg-contrast before:content-['-_'] md:mt-4 md:block xl:text-4xl">
-                <span className="inline-block max-w-full text-balance">Martossy György</span> főügyész
+                <span className="inline-block max-w-full text-balance capitalize">Martossy György</span> főügyész
               </p>
             </div>
           </div>
