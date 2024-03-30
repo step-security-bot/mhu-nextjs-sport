@@ -34,7 +34,7 @@ export default function Footer() {
               >
                 <span className="sr-only">Facebook</span>
 
-                <FontAwesomeIcon icon={faFacebook} height={24} width={24} />
+                <FontAwesomeIcon icon={faFacebook} className={`size-6`} />
               </a>
             </li>
 
@@ -46,7 +46,7 @@ export default function Footer() {
                 className="transition text-primary hover:opacity-75 dark:text-bg-contrast"
               >
                 <span className="sr-only">YouTube</span>
-                <FontAwesomeIcon icon={faYoutube} height={24} width={24} />
+                <FontAwesomeIcon icon={faYoutube} className={`size-6`} />
               </a>
             </li>
 
@@ -59,7 +59,7 @@ export default function Footer() {
               >
                 <span className="sr-only">X</span>
 
-                <FontAwesomeIcon icon={faXTwitter} height={24} width={24} />
+                <FontAwesomeIcon icon={faXTwitter} className={`size-6`} />
               </a>
             </li>
 
@@ -72,7 +72,7 @@ export default function Footer() {
               >
                 <span className="sr-only">GitHub</span>
 
-                <FontAwesomeIcon icon={faGithub} height={24} width={24} />
+                <FontAwesomeIcon icon={faGithub} className={`size-6`} />
               </a>
             </li>
           </ul>
