@@ -63,7 +63,7 @@ function createCspHeaders(nonce) {
     return `
       ${defaultsCSPHeaders}
       default-src 'none';
-      script-src 'self';
+      script-src 'self' 'unsafe-inline';
       manifest-src 'self';
       worker-src 'self' blob:;
       img-src 'self' blob: data:;
