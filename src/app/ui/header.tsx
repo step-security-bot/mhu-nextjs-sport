@@ -115,7 +115,7 @@ function PopoverLink({ href, children }: Readonly<SimpleLink>) {
   return (
     <Link
       href={href}
-      className={`text-sm leading-6 transition-colors duration-200 hover:text-bg-contrast/80 ${pathname === href ? 'font-extrabold underline decoration-primary decoration-2 drop-shadow-lg text-primary dark:text-primary-600' : 'font-semibold text-bg-contrast'}`}
+      className={`text-sm leading-6 transition-colors duration-200 hover:underline hover:decoration-primary hover:decoration-1 hover:text-bg-contrast/80 hover:dark:decoration-primary-400 ${pathname === href ? 'font-extrabold underline decoration-primary decoration-2 drop-shadow-lg text-primary dark:text-primary-600' : 'font-semibold text-bg-contrast'}`}
     >
       {children}
     </Link>
