@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function Lodging() {
   return (
-    <div className="bg-white dark:bg-gray-800">
+    <main className="bg-white dark:bg-gray-800">
       <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
         <div className={`prose`}>
           <Link className={``} href={`https://sandraifjusagiszallo.hu/`} target={'_blank'} prefetch={false}>
@@ -92,6 +92,6 @@ export default function Lodging() {
           <FontAwesomeIcon icon={faMountainSun} className={`size-20 rounded-lg bg-gray-100`} title={`Kép helye`} />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
