@@ -679,11 +679,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serwist/build@npm:9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/build@npm:9.0.0-preview.18"
+"@serwist/build@npm:9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/build@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/core": "npm:9.0.0-preview.18"
+    "@serwist/core": "npm:9.0.0-preview.19"
     common-tags: "npm:1.8.2"
     fast-json-stable-stringify: "npm:2.1.0"
     fs-extra: "npm:11.2.0"
@@ -698,45 +698,31 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/8626cef2dea6f6c11b239cd69a2d4cfd7379c933362502145b1e5c9c62fb3753d01d82f0e9ea41a1e277ec2a1c0384da78aeac5753e9c652682bd3abcc8734c0
+  checksum: 10/043bb5cc7be7843693f7d3d1933de9b59c24555e7c66e100361c07ffab9992e450393fc4eee41befab159c7ee29b156fd54de49f2e2c35d6f349f0480a93a799
   languageName: node
   linkType: hard
 
-"@serwist/core@npm:9.0.0-preview.18, @serwist/core@npm:^9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/core@npm:9.0.0-preview.18"
+"@serwist/core@npm:9.0.0-preview.19, @serwist/core@npm:^9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/core@npm:9.0.0-preview.19"
   peerDependencies:
     typescript: ">=5.0.0"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/a29df05e81cd6f90d302ab4485922677a9feca92c3ccd1abb7483d2948dba830081d99c71a7695f93ee2809e241571e93288cf47f7726ad96347f1c202abd352
+  checksum: 10/77414cc5cf7c4c89b791d5faec7e6b28a88d3efa7017613e6dc9827af07ee543c848f0debff667bda02659b99b1f56d9e78cc612190c19d32314a8dd8df60fe1
   languageName: node
   linkType: hard
 
-"@serwist/navigation-preload@npm:9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/navigation-preload@npm:9.0.0-preview.18"
+"@serwist/next@npm:^9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/next@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/core": "npm:9.0.0-preview.18"
-  peerDependencies:
-    typescript: ">=5.0.0"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10/75293225f9a5ba79137d60b142a06733b09bacb4f293e12bc19ee26de3dc522cfedc1bcc986943dd4f970befb544f2f7a3afe07f49ab6f19c00e39692b2f3e16
-  languageName: node
-  linkType: hard
-
-"@serwist/next@npm:^9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/next@npm:9.0.0-preview.18"
-  dependencies:
-    "@serwist/build": "npm:9.0.0-preview.18"
-    "@serwist/core": "npm:9.0.0-preview.18"
-    "@serwist/sw": "npm:9.0.0-preview.18"
-    "@serwist/webpack-plugin": "npm:9.0.0-preview.18"
-    "@serwist/window": "npm:9.0.0-preview.18"
+    "@serwist/build": "npm:9.0.0-preview.19"
+    "@serwist/core": "npm:9.0.0-preview.19"
+    "@serwist/sw": "npm:9.0.0-preview.19"
+    "@serwist/webpack-plugin": "npm:9.0.0-preview.19"
+    "@serwist/window": "npm:9.0.0-preview.19"
     chalk: "npm:5.3.0"
     glob: "npm:10.3.10"
     zod: "npm:3.22.4"
@@ -746,45 +732,44 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/3f9eef38fead4b75b16b6f58d4cbeecc7cdf6b6fe9067206769176628d9479026a7002690cb111d0ae0339ba82bd47de491153fb05d3c1bc48e486a14ae575e4
+  checksum: 10/ced8127a047cdf869fa5e19c68291f06e8ce7a2c581ee98d53d9cbe4b522b2d906d801089187a66f929d454ee84dd25893a0c25c2a2e9cfa98b25333ddc22534
   languageName: node
   linkType: hard
 
-"@serwist/precaching@npm:^9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/precaching@npm:9.0.0-preview.18"
+"@serwist/precaching@npm:^9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/precaching@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/sw": "npm:9.0.0-preview.18"
+    "@serwist/sw": "npm:9.0.0-preview.19"
   peerDependencies:
     typescript: ">=5.0.0"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/cd316e54c3d19b16f127db445411b52c167d8c682e1e49f5788d8ae8e49706556338b356ba1c839da6a833d169c1869eaeec4ef586b368ba8e5bb3fd5257ce7a
+  checksum: 10/dd5ed23eb0b7169ea41993b9e53ff395808de032e6ef88e0f80ff137426813d603215677d7e6b31e06946e88fccfbe9dce7401edf0922cb2f0cb14bd50413f28
   languageName: node
   linkType: hard
 
-"@serwist/sw@npm:9.0.0-preview.18, @serwist/sw@npm:^9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/sw@npm:9.0.0-preview.18"
+"@serwist/sw@npm:9.0.0-preview.19, @serwist/sw@npm:^9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/sw@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/core": "npm:9.0.0-preview.18"
-    "@serwist/navigation-preload": "npm:9.0.0-preview.18"
+    "@serwist/core": "npm:9.0.0-preview.19"
     idb: "npm:8.0.0"
   peerDependencies:
     typescript: ">=5.0.0"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/6d8aa732b3570b539bdb35faf9574e9fc801f7ed18091979193f8010893c8042ed2d11f1c7bef65885efee9e6647dc42bbd2cf27f0e453f8df648625794b2d02
+  checksum: 10/444cb99ff191b75db4c8f2444eb35bcf76e0492c8bbde6e318a830d950621925978e4fba054ed5863355bf9807ef6d3c520f75708ad5d37a07751c32a0b83bf8
   languageName: node
   linkType: hard
 
-"@serwist/webpack-plugin@npm:9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/webpack-plugin@npm:9.0.0-preview.18"
+"@serwist/webpack-plugin@npm:9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/webpack-plugin@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/build": "npm:9.0.0-preview.18"
+    "@serwist/build": "npm:9.0.0-preview.19"
     pretty-bytes: "npm:6.1.1"
     upath: "npm:2.0.1"
     zod: "npm:3.22.4"
@@ -796,22 +781,22 @@ __metadata:
       optional: true
     webpack:
       optional: true
-  checksum: 10/6ebf96cc7c820c764ac95335806496a58902b5fcdaded03766a961b1ad0c8a9204bb6ab78b176411fad7331fd4d88b1d4599953088caee5d7ff1a4eac1b6d8e2
+  checksum: 10/4fb555a74d1b156e5dd5c9142a33b90032233fa5ad5a59731d6528eb881bf7b6926dfd47a46c3ac9f5ae6d16dfa5068ed5495321c901d40e8362966f71f227ba
   languageName: node
   linkType: hard
 
-"@serwist/window@npm:9.0.0-preview.18":
-  version: 9.0.0-preview.18
-  resolution: "@serwist/window@npm:9.0.0-preview.18"
+"@serwist/window@npm:9.0.0-preview.19":
+  version: 9.0.0-preview.19
+  resolution: "@serwist/window@npm:9.0.0-preview.19"
   dependencies:
-    "@serwist/core": "npm:9.0.0-preview.18"
+    "@serwist/core": "npm:9.0.0-preview.19"
     "@types/trusted-types": "npm:2.0.7"
   peerDependencies:
     typescript: ">=5.0.0"
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/8e261e80a791e65fbb4771e8afd7395c28b00ea42c3c1add78a8c3800637c022e44dcd7b69058a169e60ad00cb3db93970f3eb10629298a78eee8c6662c20e5c
+  checksum: 10/87580610ab71880fc8097819e780b60d09606002ecf297563a19026bc777ec6601f7a0620cd1f83ed2657108645227b36956be1ea60ee618203271bc08e1bf12
   languageName: node
   linkType: hard
 
@@ -3725,10 +3710,10 @@ __metadata:
     "@headlessui/react": "npm:^1.7.18"
     "@sentry/nextjs": "npm:^7.109.0"
     "@sentry/utils": "npm:^7.109.0"
-    "@serwist/core": "npm:^9.0.0-preview.18"
-    "@serwist/next": "npm:^9.0.0-preview.18"
-    "@serwist/precaching": "npm:^9.0.0-preview.18"
-    "@serwist/sw": "npm:^9.0.0-preview.18"
+    "@serwist/core": "npm:^9.0.0-preview.19"
+    "@serwist/next": "npm:^9.0.0-preview.19"
+    "@serwist/precaching": "npm:^9.0.0-preview.19"
+    "@serwist/sw": "npm:^9.0.0-preview.19"
     "@tabler/icons-react": "npm:^3.1.0"
     "@tailwindcss/typography": "npm:^0.5.12"
     "@total-typescript/ts-reset": "npm:^0.5.1"
