@@ -11,6 +11,8 @@ const cspEndpoint = {
   ],
   include_subdomains: true,
 };
+const reportUris = cspEndpoint.endpoints.map((endpoint) => new URL(endpoint.url).origin).join(' ');
+
 // CSP headers here is set based on Next.js recommendations:
 // https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
 /**
@@ -35,12 +37,12 @@ function createCspHeaders(nonce) {
   // https://vercel.com/docs/workflow-collaboration/comments/specialized-usage#using-a-content-security-policy
   // and white-list vitals.vercel-insights
   // based on: https://vercel.com/docs/speed-insights#content-security-policy
-  if (process.env?.VERCEL_ENV === 'preview') {
+  if (process.env.VERCEL_ENV === 'preview') {
     return `
       ${defaultsCSPHeaders}
       default-src 'none';
       script-src 'self' https://vercel.live/ https://vercel.com 'unsafe-inline';
-      connect-src 'self' https://vercel.live/ https://vercel.com https://vitals.vercel-insights.com https://*.pusher.com/ wss://*.pusher.com/ https://o4506996276461568.ingest.us.sentry.io;
+      connect-src 'self' https://vercel.live/ https://vercel.com https://vitals.vercel-insights.com https://*.pusher.com/ wss://*.pusher.com/ ${reportUris};
       img-src 'self' https://vercel.live/ https://vercel.com https://sockjs-mt1.pusher.com/ data: blob:;
       frame-src 'self' https://vercel.live/ https://vercel.com https://www.google.com/;
       style-src-elem 'self' 'unsafe-inline' https://vercel.live/;
@@ -67,7 +69,7 @@ function createCspHeaders(nonce) {
       manifest-src 'self';
       worker-src 'self' blob:;
       img-src 'self' blob: data:;
-      connect-src 'self' https://vitals.vercel-insights.com https://o4506996276461568.ingest.us.sentry.io;
+      connect-src 'self' https://vitals.vercel-insights.com ${reportUris};
       font-src 'self';
       frame-src https://www.google.com/;
       `;
@@ -85,7 +87,7 @@ function createCspHeaders(nonce) {
     script-src 'self' 'unsafe-inline' 'unsafe-eval';
     worker-src 'self' blob:;
     img-src 'self' blob: data:;
-    connect-src 'self' https://o4506996276461568.ingest.us.sentry.io;
+    connect-src 'self' ${reportUris};
     font-src 'self';
     frame-src 'self' https://www.google.com/;
   `;
