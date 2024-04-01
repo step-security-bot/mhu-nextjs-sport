@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <LandingBackground />
-      <main className="flex min-h-svh flex-col items-center justify-between gap-1 p-4 md:p-24">
+      <main className="relative flex min-h-svh flex-col items-center justify-between gap-1 p-4 md:p-24">
+        <LandingBackground />
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex"></div>
 
         <LandingTitle />
