@@ -92,6 +92,7 @@ function createCspHeaders(nonce) {
     frame-src 'self' https://www.google.com/;
   `;
 }
+
 const cspHeaders = {
   source: '/(.*)',
   headers: [
@@ -121,6 +122,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.googleusercontent.com',
       },
     ],
   },

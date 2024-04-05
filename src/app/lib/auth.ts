@@ -6,6 +6,7 @@ import * as process from 'process';
 import * as schema from '@/app/db/schema';
 import { Adapter } from '@auth/core/adapters';
 import { and, eq } from 'drizzle-orm/sql/expressions/conditions';
+import Google from '@auth/core/providers/google';
 
 export const {
   handlers: { GET, POST },
@@ -18,6 +19,10 @@ export const {
     GitHub({
       clientId: process.env['GITHUB_CLIENT_ID'] as string,
       clientSecret: process.env['GITHUB_CLIENT_SECRET'] as string,
+    }),
+    Google({
+      clientId: process.env['GOOGLE_CLIENT_ID'] as string,
+      clientSecret: process.env['GOOGLE_CLIENT_SECRET'] as string,
     }),
   ],
   pages: {

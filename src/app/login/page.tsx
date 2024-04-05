@@ -2,8 +2,7 @@
 import { signIn } from 'next-auth/react';
 import { IconPlayHandball } from '@tabler/icons-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faGoogle, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import Image from 'next/image';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const providers = [
   {
@@ -17,17 +16,17 @@ const providers = [
       void signIn('github', { callbackUrl: page });
     },
   },
-  // {
-  //   id: 'google',
-  //   button: (
-  //     <>
-  //       <FontAwesomeIcon icon={faGoogle} className={`size-6 pr-4`} /> Google belépés
-  //     </>
-  //   ),
-  //   onClick: (page: string) => {
-  //     void signIn('google', { callbackUrl: page });
-  //   },
-  // },
+  {
+    id: 'google',
+    button: (
+      <>
+        <FontAwesomeIcon icon={faGoogle} className={`size-6 pr-4`} /> Google belépés
+      </>
+    ),
+    onClick: (page: string) => {
+      void signIn('google', { callbackUrl: page });
+    },
+  },
   // {
   //   id: 'twitter',
   //   button: (
