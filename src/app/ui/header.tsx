@@ -4,12 +4,15 @@ import Link from 'next/link';
 import Button from '@/app/ui/buttons/link';
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Fragment, MouseEventHandler, ReactNode, useState } from 'react';
+import { Fragment, MouseEventHandler, ReactNode, useEffect, useState } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 import { usePathname } from 'next/navigation';
+import { signOut, getSession } from 'next-auth/react';
+import Image from 'next/image';
+import { faUser } from '@fortawesome/free-regular-svg-icons/faUser';
 
 type SimpleLink = { href: string; children: ReactNode };
 type DropDownLinks = {
@@ -57,7 +60,11 @@ function DialogLink({
   href,
   children,
   onClick,
-}: Readonly<{ href: string; children: ReactNode; onClick?: MouseEventHandler<HTMLElement> | undefined }>) {
+}: Readonly<{
+  href: string;
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLElement> | undefined;
+}>) {
   const pathname = usePathname();
   return (
     <Link
@@ -198,12 +205,136 @@ function PopoverMenu({ title, items, callsToAction }: Readonly<DropDownLinks>) {
   );
 }
 
+function LoginButton({ returnUrl, auth }: Readonly<{ returnUrl: string; auth: boolean }>): ReactNode {
+  if (!auth) {
+    return <Button href={`/login?${returnUrl}`}>Bejelentkezés</Button>;
+  }
+  return null;
+}
+
+function UserInfo({
+  name,
+  email,
+  avatar,
+  pathname,
+  auth,
+}: Readonly<{
+  name: string;
+  email: string;
+  avatar: string;
+  pathname: string;
+  auth: boolean;
+}>): ReactNode {
+  if (!auth) {
+    return null;
+  }
+
+  function Avatar({ src, alt }: Readonly<{ src: string; alt: string }>) {
+    if (src === '') {
+      return (
+        <FontAwesomeIcon
+          icon={faUser}
+          className={`size-6 items-center justify-center rounded-full text-bg-contrast`}
+          aria-hidden="true"
+        />
+      );
+    }
+    return (
+      <Image
+        className="size-8 items-center justify-center rounded-full"
+        src={src}
+        alt={alt}
+        width={36}
+        height={36}
+        quality={100}
+      />
+    );
+  }
+
+  return (
+    <>
+      <Popover className="relative">
+        <Popover.Button
+          className={`flex rounded-full text-sm focus:ring-4 focus:ring-primary-600 md:me-0 dark:focus:ring-primary-200`}
+        >
+          <Avatar src={avatar} alt={`${name} profilképe`} />
+        </Popover.Button>
+        <Popover.Overlay className="fixed inset-0 opacity-30 bg-black" />
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-200"
+          enterFrom="opacity-0 motion-safe:translate-y-1"
+          enterTo="opacity-100 motion-safe:translate-y-0"
+          leave="transition ease-in duration-150"
+          leaveFrom="opacity-100 motion-safe:translate-y-0"
+          leaveTo="opacity-0 motion-safe:translate-y-1"
+        >
+          <Popover.Panel className="absolute -left-8 z-50 my-4 list-none divide-y rounded-lg text-base shadow divide-gray-100 bg-white dark:divide-gray-600 dark:bg-gray-700">
+            <div className="px-4 py-3">
+              <span className="block text-sm text-gray-900 dark:text-bg-contrast" title={name}>
+                {name}
+              </span>
+              <span className="block truncate text-sm text-gray-500 dark:text-bg-contrast/80" title={email}>
+                {email}
+              </span>
+            </div>
+            <ul className="py-2">
+              <li>
+                <Popover.Button
+                  onClick={() => {
+                    void signOut({ redirect: true, callbackUrl: pathname });
+                  }}
+                  className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Kijelentkezés
+                </Popover.Button>
+              </li>
+            </ul>
+          </Popover.Panel>
+        </Transition>
+      </Popover>
+
+      <button
+        className={`hidden rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm transition-colors
+            duration-200
+            ease-in-out bg-primary text-bg-contrast hover:bg-primary-600 focus-visible:outline focus-visible:outline-2
+            focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:bg-primary-800`}
+        onClick={() => {
+          void signOut({ redirect: true, callbackUrl: pathname });
+        }}
+      >
+        Kijelentkezés
+      </button>
+    </>
+  );
+}
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [auth, setAuth] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const pathname = usePathname();
+  useEffect(() => {
+    async function checkAuth() {
+      const session = await getSession();
+      if (session?.user != null) {
+        setName(session.user.name ?? '');
+        setEmail(session.user.email ?? '');
+        setAvatar(session.user.image ?? '');
+      }
+      setAuth(session?.user != null);
+    }
+
+    void checkAuth();
+  }, []);
+
+  const returnUrl = new URLSearchParams({ returnUrl: pathname });
   return (
     <>
       <header className="bg-gray-100 dark:bg-gray-900">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <nav className="mx-auto flex max-w-7xl items-center p-6 lg:justify-between lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <Link
               className="block transition-colors duration-200 text-primary hover:text-primary/75 dark:text-primary-600 dark:hover:text-primary-400/75"
@@ -212,17 +343,6 @@ export default function Header() {
               <span className="sr-only">Főoldal</span>
               <IconPlayHandball size={40} />
             </Link>
-          </div>
-          <div className="flex lg:hidden">
-            <button
-              type={'button'}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-200 text-primary hover:text-primary/75 dark:text-primary-600 dark:hover:text-primary-400/75"
-              onClick={() => setMobileMenuOpen(true)}
-            >
-              {/*<input type="checkbox" id="toggler" className={``} />*/}
-              <span className="sr-only">Fő menü megnyitása</span>
-              <FontAwesomeIcon className={`size-6`} icon={faBars} aria-hidden="true" />
-            </button>
           </div>
           <Popover.Group as={'menu'} className="hidden lg:flex lg:gap-x-12">
             {menus.map((menu) => {
@@ -245,21 +365,25 @@ export default function Header() {
               }
             })}
           </Popover.Group>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Button href={'/login'}>Bejelentkezés</Button>
+          <span className={`px-4 lg:hidden`}></span>
+          <div className="lg:flex lg:flex-1 lg:justify-end">
+            <span className={`hidden lg:block`}>
+              <LoginButton returnUrl={returnUrl.toString()} auth={auth} />
+            </span>
+            <UserInfo name={name} email={email} avatar={avatar} pathname={pathname} auth={auth} />
           </div>
-          {/*<div className="hidden lg:flex lg:flex-1 lg:justify-end">*/}
-          {/*  <Link href={`/fiok`} title={`Fiókom`}>*/}
-          {/*    <Image*/}
-          {/*      className="inline-block size-12 rounded-full ring-1 ring-white"*/}
-          {/*      src="https://utfs.io/f/ce34ec0d-6cae-41de-b552-0059d9b027ef-c9cbbw.jpg"*/}
-          {/*      alt="Avatar"*/}
-          {/*      width={0}*/}
-          {/*      height={0}*/}
-          {/*      quality={100}*/}
-          {/*    />*/}
-          {/*  </Link>*/}
-          {/*</div>*/}
+          <span className={`grow lg:hidden`}></span>
+          <div className="flex lg:hidden">
+            <button
+              type={'button'}
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-200 text-primary hover:text-primary/75 dark:text-primary-600 dark:hover:text-primary-400/75"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              {/*<input type="checkbox" id="toggler" className={``} />*/}
+              <span className="sr-only">Fő menü megnyitása</span>
+              <FontAwesomeIcon className={`size-6`} icon={faBars} aria-hidden="true" />
+            </button>
+          </div>
         </nav>
         <Transition as={Fragment} show={mobileMenuOpen}>
           <Dialog as="div" className="lg:hidden" onClose={setMobileMenuOpen}>
@@ -321,20 +445,8 @@ export default function Header() {
                       })}
                     </div>
                     <div className="py-6">
-                      <Button href={'/login'}>Bejelentkezés</Button>
+                      <LoginButton returnUrl={returnUrl.toString()} auth={auth} />
                     </div>
-                    {/*<div className="py-6">*/}
-                    {/*  <Link href={`/fiok`} title={`Fiókom`}>*/}
-                    {/*    <Image*/}
-                    {/*      className="inline-block size-12 rounded-full ring-1 ring-white"*/}
-                    {/*      src="https://utfs.io/f/ce34ec0d-6cae-41de-b552-0059d9b027ef-c9cbbw.jpg"*/}
-                    {/*      alt="Avatar"*/}
-                    {/*      width={0}*/}
-                    {/*      height={0}*/}
-                    {/*      quality={100}*/}
-                    {/*    />*/}
-                    {/*  </Link>*/}
-                    {/*</div>*/}
                   </div>
                 </div>
               </Dialog.Panel>
