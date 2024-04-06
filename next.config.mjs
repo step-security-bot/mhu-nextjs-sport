@@ -7,7 +7,7 @@ const jiti = createJiti(fileURLToPath(import.meta.url));
 
 jiti('./src/app/lib/env');
 
-const imageSrc = `https://utfs.io https://source.unsplash.com https://avatars.githubusercontent.com https://*.googleusercontent.com https://*.upcloudobjects.com https://app.simplelogin.io`;
+const imageSrc = `https://utfs.io/ https://source.unsplash.com/ https://avatars.githubusercontent.com/ https://*.googleusercontent.com/ https://*.upcloudobjects.com/ https://app.simplelogin.io/`;
 const cspEndpoint = {
   group: 'csp-endpoint',
   max_age: 10886400,
