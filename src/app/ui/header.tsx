@@ -11,7 +11,6 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 import { usePathname } from 'next/navigation';
 import { signOut, getSession } from 'next-auth/react';
-import Image from 'next/image';
 import { faUser } from '@fortawesome/free-regular-svg-icons/faUser';
 
 type SimpleLink = { href: string; children: ReactNode };
@@ -240,14 +239,9 @@ function UserInfo({
       );
     }
     return (
-      <Image
-        className="size-8 items-center justify-center rounded-full"
-        src={src}
-        alt={alt}
-        width={36}
-        height={36}
-        quality={100}
-      />
+      // User images should not be optimized because unauthorized sources throw an error instead of just not showing, which is unaccepatable
+      // eslint-disable-next-line @next/next/no-img-element
+      <img className="size-8 items-center justify-center rounded-full" src={src} alt={alt} width={36} height={36} />
     );
   }
 

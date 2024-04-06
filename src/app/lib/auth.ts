@@ -7,6 +7,7 @@ import * as schema from '@/app/db/schema';
 import { Adapter } from '@auth/core/adapters';
 import { and, eq } from 'drizzle-orm/sql/expressions/conditions';
 import Google from '@auth/core/providers/google';
+import SimpleLogin, { SimpleLoginProfile } from '@/app/lib/simple-login';
 
 export const {
   handlers: { GET, POST },
@@ -24,6 +25,18 @@ export const {
       clientId: process.env['GOOGLE_CLIENT_ID'] as string,
       clientSecret: process.env['GOOGLE_CLIENT_SECRET'] as string,
       allowDangerousEmailAccountLinking: true,
+    }),
+    SimpleLogin<SimpleLoginProfile>({
+      clientId: process.env['SIMPLELOGIN_CLIENT_ID'] as string,
+      clientSecret: process.env['SIMPLELOGIN_CLIENT_SECRET'] as string,
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name === '' ? 'SimpleLogin felhasználó' : profile.name,
+          email: profile.email,
+          image: profile.avatar_url,
+        };
+      },
     }),
   ],
   pages: {
@@ -49,5 +62,7 @@ function getAdapter(): Adapter {
 
       return results?.user ?? null;
     },
+    // @tss-expect-error simplelogin adds `user` to the data
+    // linkAccount: async ({ user, ...data }) => await db.insert(schema.accounts).values(data).get(),
   };
 }
