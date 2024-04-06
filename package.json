@@ -46,7 +46,7 @@
     "@sentry/utils": "^7.109.0",
     "@tailwindcss/typography": "^0.5.12",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.5",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
