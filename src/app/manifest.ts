@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: APP_DEFAULT_TITLE,
     description: APP_DESCRIPTION,
     id: '/?source=pwa',
-    start_url: '/?source=pwa',
+    start_url: '/',
     scope: '/',
     icons: [
       {
