@@ -2,7 +2,7 @@
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import { init, replayIntegration } from '@sentry/nextjs';
+import { browserApiErrorsIntegration, init, replayIntegration } from '@sentry/nextjs';
 import { env } from '@/app/lib/env';
 
 init({
@@ -27,5 +27,6 @@ init({
       maskAllText: true,
       blockAllMedia: true,
     }),
+    browserApiErrorsIntegration(),
   ],
 });

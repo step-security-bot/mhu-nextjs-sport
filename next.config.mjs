@@ -3,6 +3,7 @@ import withSerwistInit from '@serwist/next';
 import { fileURLToPath } from 'node:url';
 import createJiti from 'jiti';
 import { withAxiom } from 'next-axiom';
+
 const jiti = createJiti(fileURLToPath(import.meta.url));
 
 jiti('./src/app/lib/env');
@@ -155,13 +156,15 @@ const nextConfig = {
   },
 };
 
+const withAxiomConfig = withAxiom(nextConfig);
+
 const withSerwist = withSerwistInit({
   swSrc: 'src/app/lib/sw.ts',
   swDest: 'public/sw.js',
 });
 
 export default withSentryConfig(
-  withAxiom(withSerwist(nextConfig)),
+  withSerwist(withAxiomConfig),
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
