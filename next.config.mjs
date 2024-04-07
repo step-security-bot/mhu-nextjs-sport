@@ -48,7 +48,7 @@ function createCspHeaders(nonce) {
     return `
       ${defaultsCSPHeaders}
       default-src 'none';
-      script-src 'self' https://vercel.live/ https://vercel.com 'unsafe-inline' https://*.vercel-scripts.com/;
+      script-src 'self' https://vercel.live/ https://vercel.com 'unsafe-inline';
       connect-src 'self' https://vercel.live/ https://vercel.com https://vitals.vercel-insights.com https://*.pusher.com/ wss://*.pusher.com/ ${reportUris};
       img-src 'self' https://vercel.live/ https://vercel.com https://sockjs-mt1.pusher.com/ data: blob: ${imageSrc};
       frame-src 'self' https://vercel.live/ https://vercel.com https://www.google.com/;
@@ -72,7 +72,7 @@ function createCspHeaders(nonce) {
     return `
       ${defaultsCSPHeaders}
       default-src 'none';
-      script-src 'self' 'unsafe-inline' https://*.vercel-scripts.com/;
+      script-src 'self' 'unsafe-inline';
       manifest-src 'self';
       worker-src 'self' blob:;
       img-src 'self' blob: data: ${imageSrc};
