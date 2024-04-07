@@ -12,7 +12,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 import { usePathname } from 'next/navigation';
 import { signOut, getSession } from 'next-auth/react';
 import { faUser } from '@fortawesome/free-regular-svg-icons/faUser';
-import { captureMessage, setTag } from '@sentry/nextjs';
+import { setTag } from '@sentry/nextjs';
 
 type SimpleLink = { href: string; children: ReactNode };
 type DropDownLinks = {
