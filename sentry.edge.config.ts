@@ -7,6 +7,11 @@ import { init } from '@sentry/nextjs';
 import { env } from '@/app/lib/env';
 import { captureConsoleIntegration } from '@sentry/integrations';
 
+const integrations = [];
+if (process.env.NODE_ENV !== 'development') {
+  integrations.push(captureConsoleIntegration());
+}
+
 init({
   dsn: env.SENTRY_DSN,
 
@@ -15,5 +20,5 @@ init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
-  integrations: [captureConsoleIntegration()],
+  integrations: integrations,
 });

@@ -5,6 +5,18 @@
 import { browserApiErrorsIntegration, init, replayIntegration } from '@sentry/nextjs';
 import { env } from '@/app/lib/env';
 
+const integrations = [];
+if (process.env.NODE_ENV !== 'development') {
+  integrations.push(
+    replayIntegration({
+      // Additional Replay configuration goes in here, for example:
+      maskAllText: true,
+      blockAllMedia: true,
+    }),
+    browserApiErrorsIntegration(),
+  );
+}
+
 init({
   dsn: env.NEXT_PUBLIC_SENTRY_DSN,
 
@@ -21,12 +33,5 @@ init({
   replaysSessionSampleRate: 0.1,
 
   // You can remove this option if you're not planning to use the Sentry Session Replay feature:
-  integrations: [
-    replayIntegration({
-      // Additional Replay configuration goes in here, for example:
-      maskAllText: true,
-      blockAllMedia: true,
-    }),
-    browserApiErrorsIntegration(),
-  ],
+  integrations: integrations,
 });
