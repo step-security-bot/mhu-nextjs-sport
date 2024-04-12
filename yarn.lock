@@ -4902,6 +4902,7 @@ __metadata:
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
     "@headlessui/react": "npm:^1.7.18"
     "@libsql/client": "npm:^0.6.0"
+    "@sentry/integrations": "npm:7.109.0"
     "@sentry/nextjs": "npm:^7.109.0"
     "@sentry/utils": "npm:^7.109.0"
     "@serwist/core": "npm:^9.0.0-preview.21"
