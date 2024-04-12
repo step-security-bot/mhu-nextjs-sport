@@ -77,7 +77,7 @@ function createCspHeaders(nonce) {
       manifest-src 'self';
       worker-src 'self' blob:;
       img-src 'self' blob: data: ${imageSrc};
-      connect-src 'self' https://vitals.vercel-insights.com ${reportUris};
+      connect-src 'self' https://vitals.vercel-insights.com ${reportUris} ${imageSrc};
       font-src 'self';
       frame-src https://www.google.com/;
       `;
