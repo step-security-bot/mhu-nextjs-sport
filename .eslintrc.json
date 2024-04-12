@@ -23,11 +23,14 @@
       "rules": {
         "eqeqeq": ["error", "smart"],
         "tailwindcss/classnames-order": "off",
-        "@typescript-eslint/no-misused-promises": ["error", {
-          "checksVoidReturn": {
-            "attributes": false
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            "checksVoidReturn": {
+              "attributes": false
+            }
           }
-        }]
+        ]
       }
     }
   ]
