@@ -5,7 +5,7 @@ import { db } from '@/app/db/db';
 import * as schema from '@/app/db/schema';
 import { Adapter } from '@auth/core/adapters';
 import { and, eq } from 'drizzle-orm/sql/expressions/conditions';
-import Google from '@auth/core/providers/google';
+import Google from 'next-auth/providers/google';
 import SimpleLogin, { SimpleLoginProfile } from '@/app/lib/simple-login';
 import { env } from '@/app/lib/env';
 
