@@ -14,7 +14,7 @@ function Title({ children }: Readonly<{ children: ReactNode }>) {
   );
 }
 
-function Media({ src, alt }: Readonly<{ src: string; alt: string }>) {
+function Media({ src, alt, priority }: Readonly<{ src: string; alt: string; priority?: boolean }>) {
   return (
     <div className="grid gap-4 sm:gap-6 lg:gap-8">
       <Image
@@ -22,8 +22,8 @@ function Media({ src, alt }: Readonly<{ src: string; alt: string }>) {
         alt={alt}
         width={400}
         height={400}
-        priority={false}
-        className={`hidden rounded-lg object-scale-down lg:block`}
+        priority={priority}
+        className={`hidden size-auto rounded-lg object-scale-down lg:block`}
       />
     </div>
   );
