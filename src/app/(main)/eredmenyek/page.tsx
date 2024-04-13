@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="flex flex-col items-center justify-center bg-white dark:bg-gray-800">
-      <ResultsTab className={`w-full lg:w-4/6`} />
+      <ResultsTab className={`w-full`} />
     </main>
   );
 }

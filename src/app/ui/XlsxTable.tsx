@@ -94,8 +94,10 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
   });
   return (
     <>
-      <div className={`relative flex h-svh grow flex-col overflow-auto shadow-md sm:rounded-lg`}>
-        <table className={`prose relative w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400`}>
+      <div
+        className={`relative flex h-svh grow flex-col overflow-auto shadow-md sm:rounded-lg lg:h-full lg:overflow-x-auto`}
+      >
+        <table className={`relative w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400`}>
           <thead
             className={`sticky top-0 text-xs uppercase bg-gray-50 text-gray-700 lg:top-[unset] lg:table-header-group dark:bg-gray-700 dark:text-gray-400`}
           >
@@ -105,7 +107,7 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
                   return (
                     <th
                       scope="col"
-                      className={`px-6 py-3 align-middle dark:text-bg-contrast`}
+                      className={`px-6 py-3 align-middle bg-gray-50 dark:bg-gray-700 dark:text-bg-contrast`}
                       key={header.id}
                       colSpan={header.colSpan}
                     >
@@ -150,7 +152,8 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
               .map((row) => {
                 return (
                   <tr
-                    className={`border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 odd:dark:bg-gray-900 even:dark:bg-gray-800`}
+                    className={`border-b odd:bg-white even:bg-gray-50 dark:border-gray-700 odd:dark:bg-gray-900
+                    even:dark:bg-gray-800`}
                     key={row.id}
                   >
                     {row.getVisibleCells().map((cell) => {
@@ -175,7 +178,7 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
             duration-200 ease-in-out bg-primary text-bg-contrast hover:bg-primary-600 focus-visible:outline
             focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:bg-primary-800`}
         >
-          Letöltés
+          Táblázat letöltése
         </Link>
       : null}
     </>
