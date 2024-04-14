@@ -11,6 +11,8 @@ import {
   IconTargetArrow,
 } from '@tabler/icons-react';
 import UnderConstruction from '@/app/ui/under-construction';
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const tabs = [
   {
@@ -22,7 +24,9 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <XlsxTable xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`} />,
+    content: () => (
+      <XlsxTable title={`Labdarúgás`} xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`} />
+    ),
   },
   {
     title: 'Úszás',
@@ -33,7 +37,7 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
   {
     title: 'Futás',
@@ -44,7 +48,7 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
   {
     title: 'Asztalitenisz',
@@ -55,7 +59,7 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
   {
     title: 'Súlylökés',
@@ -66,7 +70,7 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
   {
     title: 'Darts',
@@ -77,7 +81,7 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
   {
     title: 'Kosárlabda',
@@ -88,13 +92,38 @@ const tabs = [
         stroke={1.5}
       />
     ),
-    content: <UnderConstruction />,
+    content: () => <UnderConstruction />,
   },
 ];
 
 export default function ResultsTab({ className }: Readonly<{ className?: string }>) {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canShow, setCanShow] = useState(false);
+  useEffect(() => {
+    const sportag = searchParams.get('sportag')?.toString();
+    if (sportag != null) {
+      setSelectedIndex(tabs.findIndex((tab) => tab.title === sportag));
+    }
+    setCanShow(true);
+  }, [searchParams]);
+
+  function setTabIndex(index: number) {
+    setSelectedIndex(index);
+    const params = new URLSearchParams(searchParams);
+    const tab = tabs[index];
+    if (tab != null) {
+      params.set('sportag', tab.title);
+    } else {
+      params.delete('sportag');
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  }
+
   return (
-    <Tab.Group as={`div`} className={className}>
+    <Tab.Group as={`div`} className={className} selectedIndex={selectedIndex} onChange={setTabIndex}>
       <Tab.List className="-mb-px flex flex-wrap border-b text-center text-sm font-medium border-gray-200 text-gray-500 dark:border-gray-700 dark:text-gray-400">
         {tabs.map((tab) => (
           <Tab
@@ -112,11 +141,13 @@ export default function ResultsTab({ className }: Readonly<{ className?: string 
         {/*</Tab>*/}
       </Tab.List>
       <Tab.Panels>
-        {tabs.map((tab) => (
-          <Tab.Panel key={tab.title} className={`flex flex-col gap-1`}>
-            {tab.content}
-          </Tab.Panel>
-        ))}
+        {tabs.map((tab) =>
+          canShow ?
+            <Tab.Panel key={tab.title} className={`flex flex-col gap-1`}>
+              {tab.content()}
+            </Tab.Panel>
+          : null,
+        )}
         {/*<Tab.Panel>Content 2</Tab.Panel>*/}
         {/*<Tab.Panel>Disabled content</Tab.Panel>*/}
       </Tab.Panels>

@@ -13,7 +13,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faShareNodes, faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { env } from 'process';
 
@@ -46,10 +46,20 @@ const sortIcons: Record<SortDirection | 'false', ReactNode> = {
   ),
 };
 
-export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
+async function share(url: string, title: string) {
+  if (navigator.share) {
+    await navigator.share({
+      url,
+      title: `${title} - ${document.title}`,
+    });
+  }
+}
+
+export default function XlsxTable({ xlsx, title }: Readonly<{ xlsx: string; title: string }>) {
   const [data, setData] = useState<Record<string, ReactNode>[]>([...initial]);
   const [columns, setColumns] = useState<ColumnDef<unknown>[]>([initialColumn as never]);
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [url, setUrl] = useState<string>('');
   useEffect(() => {
     async function fetchData() {
       try {
@@ -78,7 +88,7 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
         captureException(e);
       }
     }
-
+    setUrl(window.location.href);
     void fetchData();
   }, [xlsx]);
   const table = useReactTable({
@@ -97,6 +107,23 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
       <div
         className={`relative flex h-svh grow flex-col overflow-auto shadow-md sm:rounded-lg lg:h-full lg:overflow-x-auto`}
       >
+        <div className="flex flex-row items-center justify-end gap-6 px-6 py-2 text-bg-contrast">
+          <button
+            onClick={() => share(url, title)}
+            className={`transition-colors duration-200 hover:text-primary hover:dark:text-primary-600`}
+            title={`Megosztás`}
+          >
+            <FontAwesomeIcon icon={faShareNodes} className={`size-6`} />
+          </button>
+          <Link
+            href={xlsx}
+            target={'_blank'}
+            className={`transition-colors duration-200 hover:text-primary hover:dark:text-primary-600`}
+            title={'Táblázat letöltése'}
+          >
+            <FontAwesomeIcon icon={faDownload} className={`size-6`} />
+          </Link>
+        </div>
         <table className={`relative w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400`}>
           <thead
             className={`sticky top-0 text-xs uppercase bg-gray-50 text-gray-700 lg:top-[unset] lg:table-header-group dark:bg-gray-700 dark:text-gray-400`}
@@ -169,18 +196,6 @@ export default function XlsxTable({ xlsx }: Readonly<{ xlsx: string }>) {
           </tbody>
         </table>
       </div>
-      {initial[0]?.results !== data[0]!['results'] ?
-        <Link
-          href={xlsx}
-          target={'_blank'}
-          className={`w-40 rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm
-            transition-colors
-            duration-200 ease-in-out bg-primary text-bg-contrast hover:bg-primary-600 focus-visible:outline
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:bg-primary-800`}
-        >
-          Táblázat letöltése
-        </Link>
-      : null}
     </>
   );
 }
