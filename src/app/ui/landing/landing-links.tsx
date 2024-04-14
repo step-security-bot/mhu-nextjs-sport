@@ -5,7 +5,6 @@ export default function LandingLinks() {
   return (
     <div className="grid rounded-lg text-center bg-primary/95 xl:w-full xl:max-w-7xl xl:grid-cols-3 xl:text-left">
       <LandingLink href={`/koszonto`}>
-        <NewBadge />
         <h2 className={`mb-3 inline-block text-nowrap text-2xl font-semibold`}>
           Beköszöntő{' '}
           <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
