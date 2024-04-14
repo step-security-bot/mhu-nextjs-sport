@@ -328,6 +328,7 @@ export default function Page() {
             adja, egyenlőség esetén sorrendben a legjobb második, majd a legjobb harmadik dobás alakítja ki.
           </p>
         </div>
+        <div></div>
         {/*<Media src={'https://source.unsplash.com/basketball-on-ring-QAX5Ylx-lKo'} alt={'Súlylökés'} />*/}
       </Entry>
       <Entry>
