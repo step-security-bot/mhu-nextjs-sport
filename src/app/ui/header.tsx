@@ -335,7 +335,7 @@ export default function Header() {
   const returnUrl = new URLSearchParams({ returnUrl: pathname });
   return (
     <>
-      <header className="bg-gray-100 dark:bg-gray-900">
+      <header className="bg-gray-100 dark:bg-gray-900 print:hidden">
         <nav className="mx-auto flex max-w-7xl items-center p-6 lg:justify-between lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <Link

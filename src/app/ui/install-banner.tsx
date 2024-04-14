@@ -50,7 +50,7 @@ export default function InstallBanner() {
   }
   return (
     <div
-      className={`hidden text-balance px-4 py-3 bg-primary text-bg-contrast ${showInstall || isIOS ? 'browser:block' : ''}`}
+      className={`hidden text-balance px-4 py-3 bg-primary text-bg-contrast print:hidden ${showInstall || isIOS ? 'browser:block' : ''}`}
     >
       <p className="text-center text-sm font-medium">
         Már elérhető {deviceType} alkalmazásként is!&nbsp;

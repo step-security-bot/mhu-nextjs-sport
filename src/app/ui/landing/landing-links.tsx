@@ -1,5 +1,4 @@
 import LandingLink from '@/app/ui/buttons/landing-link';
-import NewBadge from '@/app/ui/badge';
 
 export default function LandingLinks() {
   return (

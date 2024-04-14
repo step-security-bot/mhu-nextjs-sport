@@ -14,7 +14,7 @@ function Title({ children, id }: Readonly<{ children: ReactNode; id: string }>) 
       id={id}
       className="group/title flex flex-row text-3xl font-bold tracking-tight transition-colors duration-200 text-gray-900 sm:text-4xl dark:text-bg-contrast"
     >
-      <a href={`#${id}`} className={`flex items-center align-middle standalone:hidden`}>
+      <a href={`#${id}`} className={`flex items-center align-middle standalone:hidden print:hidden`}>
         <FontAwesomeIcon
           icon={faHashtag}
           className={`invisible size-6 group-hover/title:visible dark:text-bg-contrast`}
@@ -42,7 +42,7 @@ function Media({ src, alt, priority }: Readonly<{ src: string; alt: string; prio
 
 function Entry({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 px-4 py-6 sm:gap-y-16 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8 print:grid-cols-1 [&>div:first-of-type]:even:lg:order-last">
+    <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 px-4 py-6 sm:gap-y-16 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8 print:grid-cols-1 print:py-0 print:[page-break-after:always] [&>div:first-of-type]:even:lg:order-last">
       {children}
     </div>
   );
@@ -71,8 +71,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li>dr. Szikszai Attila</li>
-                  <li>Dr Gellért Károly</li>
+                  <li></li>
                 </ul>
               </dd>
             </div>
@@ -166,8 +165,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li>dr. Katona Szilvia</li>
-                  <li>dr. Panyi Attila</li>
+                  <li></li>
                 </ul>
               </dd>
             </div>
@@ -216,7 +214,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li className={`inline-block`}>dr.Torma András</li>
+                  <li className={`inline-block`}></li>
                 </ul>
               </dd>
             </div>
@@ -231,15 +229,6 @@ export default function Page() {
             férfi futambeosztások azonosak.
           </p>
           <p>Szöges cipő használata nem engedélyezett.</p>
-
-          {/*<dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">*/}
-          {/*  {features.map((feature) => (*/}
-          {/*    <div key={feature.name} className="border-t pt-4 border-gray-200">*/}
-          {/*      <dt className="font-medium text-gray-900">{feature.name}</dt>*/}
-          {/*      <dd className="mt-2 text-sm text-gray-500">{feature.description}</dd>*/}
-          {/*    </div>*/}
-          {/*  ))}*/}
-          {/*</dl>*/}
         </div>
         <Media src={'https://source.unsplash.com/group-of-people-running-on-stadium-atSaEOeE8Nk'} alt={'Futás'} />
       </Entry>
@@ -266,8 +255,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li>dr. Majerusz László</li>
-                  <li>dr. Horváth Zsuzsanna</li>
+                  <li></li>
                 </ul>
               </dd>
             </div>
@@ -328,7 +316,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li className={`inline-block`}>dr. Barkó Tamás</li>
+                  <li className={`inline-block`}></li>
                 </ul>
               </dd>
             </div>
@@ -367,7 +355,7 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li className={`inline-block max-w-full`}>dr. Csordás Tomi</li>
+                  <li className={`inline-block max-w-full`}></li>
                 </ul>
               </dd>
             </div>
@@ -443,24 +431,24 @@ export default function Page() {
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
             <div className="border-t pt-4 border-gray-200">
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Helyszín</dt>
-              <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">Egyetemi uszoda</dd>
+              <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80"></dd>
             </div>
             <div className="border-t pt-4 border-gray-200">
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Időpont</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
-                <time dateTime={`2024-06-29T09:00`}>2024. június 29. szombat 9.00</time>
+                <time dateTime={`2024-06-29T09:00`}></time>
               </dd>
             </div>
             <div className="border-t pt-4 border-gray-200">
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li>dr. Katona Szilvia</li>
-                  <li>dr. Panyi Attila</li>
+                  <li></li>
                 </ul>
               </dd>
             </div>
           </dl>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet libero nec purus ultricies.</p>
         </div>
         <Media src={'https://source.unsplash.com/ball-under-basketball-ring-BfphcCvhl6E'} alt={'Kosárlabda'} />
       </Entry>

@@ -47,11 +47,15 @@ const sortIcons: Record<SortDirection | 'false', ReactNode> = {
 };
 
 async function share(url: string, title: string) {
-  if (navigator.share) {
-    await navigator.share({
+  if (navigator.canShare) {
+    const data: ShareData = {
       url,
-      title: `${title} - ${document.title}`,
-    });
+      title: `${title} eredmények`,
+      text: `${title} - ${document.title}`,
+    };
+    if (navigator.canShare(data)) {
+      await navigator.share(data);
+    }
   }
 }
 
