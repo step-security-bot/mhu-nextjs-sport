@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHashtag } from '@fortawesome/free-solid-svg-icons/faHashtag';
 
 export const metadata: Metadata = {
   title: 'Sportágak',
@@ -8,7 +10,13 @@ export const metadata: Metadata = {
 
 function Title({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <h2 className="text-3xl font-bold tracking-tight transition-colors duration-200 text-gray-900 sm:text-4xl dark:text-bg-contrast">
+    <h2
+      id={`${children}`}
+      className="group/title text-3xl font-bold tracking-tight transition-colors duration-200 text-gray-900 sm:text-4xl dark:text-bg-contrast"
+    >
+      <a href={`#${children}`} className={``}>
+        <FontAwesomeIcon icon={faHashtag} className={`invisible size-6 text-bg-contrast group-hover/title:visible`} />
+      </a>
       {children}
     </h2>
   );
