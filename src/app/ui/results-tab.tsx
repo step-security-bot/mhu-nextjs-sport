@@ -13,6 +13,8 @@ import {
 import UnderConstruction from '@/app/ui/under-construction';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const tabs = [
   {
@@ -90,6 +92,17 @@ const tabs = [
         className="me-2 size-4 text-gray-400 group-hover:text-secondary-600 ui-selected:text-primary dark:text-gray-500 dark:group-hover:text-gray-300 ui-selected:dark:text-primary-400"
         aria-hidden="true"
         stroke={1.5}
+      />
+    ),
+    content: () => <UnderConstruction />,
+  },
+  {
+    title: 'Csapatverseny',
+    icon: (
+      <FontAwesomeIcon
+        className="me-2 size-4 text-gray-400 group-hover:text-secondary-600 ui-selected:text-primary dark:text-gray-500 dark:group-hover:text-gray-300 ui-selected:dark:text-primary-400"
+        aria-hidden="true"
+        icon={faPeopleGroup}
       />
     ),
     content: () => <UnderConstruction />,

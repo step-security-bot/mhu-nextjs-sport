@@ -174,7 +174,7 @@ export default function Page() {
           <p>
             A résztvevő csapatok kettő futamba nyertek sorsolás alapján besorolást (6-6). A csapatok 4 főből, 2-2 fő
             férfi és női úszóból állnak. A férfiúszók száma 2 főnél nem lehet több, elháríthatatlan akadály esetén egy
-            női versenyző kétszer is teljesítheti a távot. A táv 4 x 66 méter mellúszásban, versenyzőnként egy
+            női versenyző kétszer is teljesítheti a távot. A táv 4 &times; 66 méter mellúszásban, versenyzőnként egy
             fordulóval (mivel a medence 33 méter) úgy, hogy a falat kézzel meg kell érinteni. Az ún. bukóforduló nem
             engedélyezett. A váltások sorrendjét a csapatok döntik el, de ha csak egy női versenyző van a csapatban,
             akkor egymás utáni két távot nem úszhat. Az indulás és a váltás is a medencében történik, a végső sorrendet
