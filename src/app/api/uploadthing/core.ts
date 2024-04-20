@@ -23,7 +23,7 @@ export const ourFileRouter = {
     .middleware(async ({ req }) => {
       // This code runs on your server before upload
       const headers = req.headers;
-      const resultType = headers.get('resultType');
+      const resultType = decodeURIComponent(headers.get('resultType') ?? '');
       const parsedResult = Result.safeParse(resultType);
       if (!parsedResult.success) {
         throw new UploadThingError('Ismeretlen eredménytípus');

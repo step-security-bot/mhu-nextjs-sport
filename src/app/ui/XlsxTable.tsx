@@ -129,7 +129,7 @@ export default function XlsxTable({ xlsx, title }: Readonly<{ xlsx: string; titl
               console.error(`ERROR! ${error.message}`);
               alert(`Hiba történt a feltöltés során: ${error.message}`);
             }}
-            headers={{ resultType: title }}
+            headers={{ resultType: encodeURIComponent(title) }}
             content={{
               button: ({ ready, uploadProgress, isUploading }) => {
                 if (uploadProgress) {
