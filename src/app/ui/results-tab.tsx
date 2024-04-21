@@ -176,7 +176,10 @@ export default function ResultsTab({
               <div className={`flex flex-row items-center justify-center pt-1`}>
                 <Upload title={tab.title} canEdit={canEdit} />
               </div>
-              {getResults(results, canEdit)}
+              {getResults(
+                results.filter((x) => x.title === tab.title),
+                canEdit,
+              )}
             </Tab.Panel>
           : null,
         )}
