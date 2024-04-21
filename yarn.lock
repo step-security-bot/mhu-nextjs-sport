@@ -614,9 +614,9 @@ __metadata:
   linkType: hard
 
 "@humanwhocodes/object-schema@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@humanwhocodes/object-schema@npm:2.0.2"
-  checksum: 10/ef915e3e2f34652f3d383b28a9a99cfea476fa991482370889ab14aac8ecd2b38d47cc21932526c6d949da0daf4a4a6bf629d30f41b0caca25e146819cbfa70e
+  version: 2.0.3
+  resolution: "@humanwhocodes/object-schema@npm:2.0.3"
+  checksum: 10/05bb99ed06c16408a45a833f03a732f59bf6184795d4efadd33238ff8699190a8c871ad1121241bb6501589a9598dc83bf25b99dcbcf41e155cdf36e35e937a3
   languageName: node
   linkType: hard
 
@@ -2893,9 +2893,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-kit@npm:^0.20.16":
-  version: 0.20.16
-  resolution: "drizzle-kit@npm:0.20.16"
+"drizzle-kit@npm:^0.20.17":
+  version: 0.20.17
+  resolution: "drizzle-kit@npm:0.20.17"
   dependencies:
     "@esbuild-kit/esm-loader": "npm:^2.5.5"
     "@hono/node-server": "npm:^1.9.0"
@@ -2916,7 +2916,7 @@ __metadata:
     zod: "npm:^3.20.2"
   bin:
     drizzle-kit: bin.cjs
-  checksum: 10/31fb47c29748542be7d44e71a17507ac9bbb29b6fa96d57856189a0052aa0e8493264bcc38e23380ed55058b269321bbf7e7e00c6c91f337bcdcac7696d59c2f
+  checksum: 10/cd971541405247991a8fb4933d2354fa5d00684c9c6573606789033c3d7d98f8540d9980a124ff226f24cba98578793c19722b68d7fd75075d700b278777db2b
   languageName: node
   linkType: hard
 
@@ -5089,7 +5089,7 @@ __metadata:
     "@vercel/speed-insights": "npm:^1.0.10"
     autoprefixer: "npm:^10.4.19"
     cssnano: "npm:^6.1.2"
-    drizzle-kit: "npm:^0.20.16"
+    drizzle-kit: "npm:^0.20.17"
     drizzle-orm: "npm:^0.30.8"
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:14.2.2"
