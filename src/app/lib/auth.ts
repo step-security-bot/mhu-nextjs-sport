@@ -1,10 +1,11 @@
 import NextAuth from 'next-auth';
-import GitHub from 'next-auth/providers/github';
+import GitHub, { GitHubProfile } from 'next-auth/providers/github';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { db } from '@/app/db/db';
-import Google from 'next-auth/providers/google';
+import Google, { GoogleProfile } from 'next-auth/providers/google';
 import SimpleLogin, { SimpleLoginProfile } from '@/app/lib/simple-login';
 import { env } from '@/app/lib/env';
+import { updateUserAvatar } from '@/app/lib/actions';
 
 export const {
   handlers: { GET, POST },
@@ -36,6 +37,35 @@ export const {
       },
     }),
   ],
+  callbacks: {
+    signIn: async ({ user, account, profile }) => {
+      if (!user || !account || !profile) {
+        return true;
+      }
+      const { provider } = account;
+      let avatar: string | null = null;
+      switch (provider) {
+        case 'github': {
+          const castProfile = profile as unknown as GitHubProfile;
+          avatar = user.image !== castProfile.avatar_url ? castProfile.avatar_url : null;
+          break;
+        }
+        case 'google': {
+          const castProfile = profile as GoogleProfile;
+          avatar = user.image !== castProfile.picture ? castProfile.picture : null;
+          break;
+        }
+        case 'simplelogin': {
+          const castProfile = profile as unknown as SimpleLoginProfile;
+          avatar = (user.image !== castProfile.avatar_url ? castProfile.avatar_url : null) ?? null;
+          break;
+        }
+      }
+      await updateUserAvatar({ id: user.id, avatar, provider: account.provider });
+
+      return true;
+    },
+  },
   pages: {
     signIn: '/login',
   },
