@@ -10,3 +10,7 @@ export const Result = z.enum([
   'Csapatverseny',
 ]);
 export type Result = z.infer<typeof Result>;
+
+export const ResultType = z.enum(['xlsx', 'pdf']);
+export type ResultType = z.infer<typeof ResultType>;
+export type ResultItem = { url: string; type: ResultType; title: Result };

@@ -1,10 +1,10 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { deleteResultByUrl, insertResult, isAdmin, updateAvatar } from '../db/data';
+import { deleteResultByUrl, getResultItems, insertResult, isAdmin, updateAvatar } from '../db/data';
 import { auth } from '@/app/lib/auth';
 import { isNullOrEmpty } from '@/app/utils';
-import { type Result } from '@/app/lib/types';
+import { type Result, ResultItem } from '@/app/lib/types';
 
 export async function deleteResult(url: string) {
   console.log('Delete result', url);
@@ -36,4 +36,8 @@ export async function updateUserAvatar({
     return;
   }
   return await updateAvatar({ id, avatar: avatar ?? null });
+}
+
+export async function getResults(): Promise<ResultItem[]> {
+  return await getResultItems();
 }

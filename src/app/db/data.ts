@@ -2,7 +2,7 @@ import { db } from '@/app/db/db';
 import { users } from '@/app/db/schema';
 import { and, eq, ne } from 'drizzle-orm/sql/expressions/conditions';
 import { captureException } from '@sentry/nextjs';
-import { Result } from '@/app/lib/types';
+import { Result, ResultItem } from '@/app/lib/types';
 
 export async function isAdmin(email: string): Promise<boolean> {
   try {
@@ -68,4 +68,21 @@ export async function updateAvatar({
     captureException(e);
   }
   return { updatedId: '' };
+}
+
+export async function getResultItems(): Promise<ResultItem[]> {
+  try {
+    await Promise.resolve();
+    return [
+      {
+        url: 'https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx',
+        type: 'xlsx',
+        title: `Labdarúgás`,
+      },
+    ];
+  } catch (e) {
+    console.error(e);
+    captureException(e);
+  }
+  return [];
 }

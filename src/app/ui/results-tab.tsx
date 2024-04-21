@@ -10,19 +10,30 @@ import {
   IconSwimming,
   IconTargetArrow,
 } from '@tabler/icons-react';
-import UnderConstruction from '@/app/ui/under-construction';
 import { ReactNode, useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type Result } from '@/app/lib/types';
+import { type Result, type ResultItem } from '@/app/lib/types';
 import { Upload } from '@/app/ui/uploadthing';
 
 type Tab = {
   title: Result;
   icon: ReactNode;
-  content: (props: Readonly<{ canEdit?: boolean }>) => ReactNode;
+  content: (props: Readonly<{ canEdit?: boolean; results: ResultItem[] }>) => ReactNode;
 };
+
+function getResults(results: ResultItem[], canEdit?: boolean) {
+  const tables = results.map((result) => {
+    switch (result.type) {
+      case 'xlsx':
+        return <XlsxTable key={result.url} title={result.title} xlsx={result.url} canEdit={canEdit} />;
+      default:
+        return null;
+    }
+  });
+  return tables.length > 0 ? tables : <h1 className={`prose text-bg-contrast`}>Nincs eredmény az adott sportágban.</h1>;
+}
 
 const tabs: Tab[] = [
   {
@@ -34,18 +45,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit }) => (
-      <>
-        <div className={`p-1`}>
-          <Upload title={'Labdarúgás'} canEdit={canEdit} />
-        </div>
-        <XlsxTable
-          title={`Labdarúgás`}
-          xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`}
-          canEdit={canEdit}
-        />
-      </>
-    ),
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Labdarúgás'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Úszás',
@@ -56,7 +65,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Úszás'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Futás',
@@ -67,7 +85,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Futás'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Asztalitenisz',
@@ -78,7 +105,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Asztalitenisz'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Súlylökés',
@@ -89,7 +125,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Súlylökés'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Darts',
@@ -100,7 +145,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Darts'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Kosárlabda',
@@ -111,7 +165,16 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Kosárlabda'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
   {
     title: 'Csapatverseny',
@@ -122,11 +185,28 @@ const tabs: Tab[] = [
         icon={faPeopleGroup}
       />
     ),
-    content: () => <UnderConstruction />,
+    content: ({ canEdit, results }) => {
+      return (
+        <>
+          <div className={`flex flex-row items-center justify-center p-1`}>
+            <Upload title={'Csapatverseny'} canEdit={canEdit} />
+          </div>
+          {getResults(results, canEdit)}
+        </>
+      );
+    },
   },
 ];
 
-export default function ResultsTab({ className, canEdit }: Readonly<{ className?: string; canEdit?: boolean }>) {
+export default function ResultsTab({
+  className,
+  canEdit,
+  results,
+}: Readonly<{
+  className?: string;
+  canEdit?: boolean;
+  results: ResultItem[];
+}>) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -174,7 +254,10 @@ export default function ResultsTab({ className, canEdit }: Readonly<{ className?
         {tabs.map((tab) =>
           canShow ?
             <Tab.Panel key={tab.title} className={`flex flex-col gap-1`}>
-              {tab.content({ canEdit })}
+              {tab.content({
+                canEdit,
+                results: results.filter((x) => x.title === tab.title),
+              })}
             </Tab.Panel>
           : null,
         )}
