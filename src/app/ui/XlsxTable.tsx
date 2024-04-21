@@ -19,6 +19,7 @@ import { env } from 'process';
 import { UploadButton } from '@/app/ui/uploadthing';
 import { useRouter } from 'next/navigation';
 import { canEditResults, deleteResult } from '@/app/lib/actions';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 const columnHelper = createColumnHelper<unknown>();
 const initial = [
@@ -62,7 +63,111 @@ async function share(url: string, title: string) {
   }
 }
 
-export default function XlsxTable({ xlsx, title }: Readonly<{ xlsx: string; title: string }>) {
+function Upload({
+  router,
+  title,
+  canEdit,
+}: {
+  router: AppRouterInstance;
+  title: string;
+  canEdit?: boolean;
+}): ReactNode {
+  if (!canEdit) {
+    return null;
+  }
+  return (
+    <UploadButton
+      className={`duration-200 ut-button:transition-colors ut-button:bg-primary ut-allowed-content:text-bg-contrast ut-button:ut-readying:bg-primary-600 ut-button:ut-ready:hover:hover:bg-primary-600 ut-button:ut-uploading:after:bg-primary-400/25`}
+      endpoint="resultUploader"
+      onClientUploadComplete={(res) => {
+        console.log('Files: ', res);
+        alert('Sikeres feltöltés! (Szimulált)');
+        router.refresh();
+      }}
+      onUploadError={(error: Error) => {
+        console.error(`ERROR! ${error.message}`);
+        alert(`Hiba történt a feltöltés során: ${error.message}`);
+      }}
+      headers={{ resultType: encodeURIComponent(title) }}
+      content={{
+        button: ({ ready, uploadProgress, isUploading }) => {
+          if (uploadProgress) {
+            return `Feltöltés: ${uploadProgress}%`;
+          }
+          if (isUploading) {
+            return 'Folyamatban...';
+          }
+          if (ready) {
+            return 'Feltöltés';
+          }
+          return 'Kérlek várj...';
+        },
+        allowedContent: () => {
+          return 'Max. 8MB/fájl';
+        },
+      }}
+    />
+  );
+}
+
+function DeleteButton({
+  xlsx,
+  router,
+  canEdit,
+}: {
+  xlsx: string;
+  router: AppRouterInstance;
+  canEdit?: boolean;
+}): ReactNode {
+  if (!canEdit) {
+    return null;
+  }
+  return (
+    <form
+      action={async () => {
+        try {
+          if (!(await canEditResults())) {
+            alert(`Hiba történt a törlés során! Nincs jogosultság a törléshez.`);
+            return;
+          }
+          await deleteResult(xlsx);
+        } catch (e) {
+          console.error(e);
+          if (e instanceof Error) {
+            alert(`Hiba történt a törlés során! ${e.message}`);
+          }
+          return;
+        }
+        alert('Sikeres törlés! (Szimulált)');
+        router.refresh();
+      }}
+      onSubmit={(e) => {
+        const next = confirm('Biztosan törölni szeretnéd az eredményt?');
+        if (!next) {
+          e.preventDefault();
+        }
+      }}
+    >
+      <button
+        type={'submit'}
+        className={`transition-colors duration-200 hover:text-primary hover:dark:text-primary-600`}
+        title={`Törlés`}
+      >
+        <FontAwesomeIcon icon={faTrashCan} className={`size-6`} />
+      </button>
+    </form>
+  );
+}
+
+export default function XlsxTable({
+  xlsx,
+  title,
+  canEdit,
+}: Readonly<{
+  xlsx: string;
+  title: string;
+  canEdit?: boolean;
+}>) {
   const [data, setData] = useState<Record<string, ReactNode>[]>([...initial]);
   const [columns, setColumns] = useState<ColumnDef<unknown>[]>([initialColumn as never]);
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -117,70 +222,8 @@ export default function XlsxTable({ xlsx, title }: Readonly<{ xlsx: string; titl
         className={`relative flex h-svh grow flex-col overflow-auto shadow-md sm:rounded-lg lg:h-full lg:overflow-x-auto`}
       >
         <div className="flex flex-row items-center justify-end gap-6 px-6 py-2 text-bg-contrast">
-          <UploadButton
-            className={`duration-200 ut-button:transition-colors ut-button:bg-primary ut-allowed-content:text-bg-contrast ut-button:ut-readying:bg-primary-600 ut-button:ut-ready:hover:hover:bg-primary-600 ut-button:ut-uploading:after:bg-primary-400/25`}
-            endpoint="resultUploader"
-            onClientUploadComplete={(res) => {
-              console.log('Files: ', res);
-              alert('Sikeres feltöltés! (Szimulált)');
-              router.refresh();
-            }}
-            onUploadError={(error: Error) => {
-              console.error(`ERROR! ${error.message}`);
-              alert(`Hiba történt a feltöltés során: ${error.message}`);
-            }}
-            headers={{ resultType: encodeURIComponent(title) }}
-            content={{
-              button: ({ ready, uploadProgress, isUploading }) => {
-                if (uploadProgress) {
-                  return `Feltöltés: ${uploadProgress}%`;
-                }
-                if (isUploading) {
-                  return 'Folyamatban...';
-                }
-                if (ready) {
-                  return 'Feltöltés';
-                }
-                return 'Kérlek várj...';
-              },
-              allowedContent: () => {
-                return 'Max. 8MB/fájl';
-              },
-            }}
-          />
-          <form
-            action={async () => {
-              try {
-                if (!(await canEditResults())) {
-                  alert(`Hiba történt a törlés során! Nincs jogosultság a törléshez.`);
-                  return;
-                }
-                await deleteResult(xlsx);
-              } catch (e) {
-                console.error(e);
-                if (e instanceof Error) {
-                  alert(`Hiba történt a törlés során! ${e.message}`);
-                }
-                return;
-              }
-              alert('Sikeres törlés! (Szimulált)');
-              router.refresh();
-            }}
-            onSubmit={(e) => {
-              const next = confirm('Biztosan törölni szeretnéd az eredményt?');
-              if (!next) {
-                e.preventDefault();
-              }
-            }}
-          >
-            <button
-              type={'submit'}
-              className={`transition-colors duration-200 hover:text-primary hover:dark:text-primary-600`}
-              title={`Törlés`}
-            >
-              <FontAwesomeIcon icon={faTrashCan} className={`size-6`} />
-            </button>
-          </form>
+          <Upload title={title} router={router} canEdit={canEdit} />
+          <DeleteButton xlsx={xlsx} router={router} canEdit={canEdit} />
           <button
             onClick={() => share(url, title)}
             className={`transition-colors duration-200 hover:text-primary hover:dark:text-primary-600`}

@@ -20,7 +20,7 @@ import { type Result } from '@/app/lib/types';
 type Tab = {
   title: Result;
   icon: ReactNode;
-  content: () => ReactNode;
+  content: (props: Readonly<{ canEdit?: boolean }>) => ReactNode;
 };
 
 const tabs: Tab[] = [
@@ -33,8 +33,12 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: () => (
-      <XlsxTable title={`Labdarúgás`} xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`} />
+    content: ({ canEdit }) => (
+      <XlsxTable
+        title={`Labdarúgás`}
+        xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`}
+        canEdit={canEdit}
+      />
     ),
   },
   {
@@ -116,7 +120,7 @@ const tabs: Tab[] = [
   },
 ];
 
-export default function ResultsTab({ className }: Readonly<{ className?: string }>) {
+export default function ResultsTab({ className, canEdit }: Readonly<{ className?: string; canEdit?: boolean }>) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -164,7 +168,7 @@ export default function ResultsTab({ className }: Readonly<{ className?: string 
         {tabs.map((tab) =>
           canShow ?
             <Tab.Panel key={tab.title} className={`flex flex-col gap-1`}>
-              {tab.content()}
+              {tab.content({ canEdit })}
             </Tab.Panel>
           : null,
         )}
