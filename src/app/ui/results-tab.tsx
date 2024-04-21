@@ -16,6 +16,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons/faPeopleGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type Result } from '@/app/lib/types';
+import { Upload } from '@/app/ui/uploadthing';
 
 type Tab = {
   title: Result;
@@ -34,11 +35,16 @@ const tabs: Tab[] = [
       />
     ),
     content: ({ canEdit }) => (
-      <XlsxTable
-        title={`Labdarúgás`}
-        xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`}
-        canEdit={canEdit}
-      />
+      <>
+        <div className={`p-1`}>
+          <Upload title={'Labdarúgás'} canEdit={canEdit} />
+        </div>
+        <XlsxTable
+          title={`Labdarúgás`}
+          xlsx={`https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx`}
+          canEdit={canEdit}
+        />
+      </>
     ),
   },
   {

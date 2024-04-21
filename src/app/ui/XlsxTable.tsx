@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faShareNodes, faSort, faSortDown, faSortUp, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { env } from 'process';
-import { UploadButton } from '@/app/ui/uploadthing';
 import { useRouter } from 'next/navigation';
 import { canEditResults, deleteResult } from '@/app/lib/actions';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
@@ -61,53 +60,6 @@ async function share(url: string, title: string) {
       await navigator.share(data);
     }
   }
-}
-
-function Upload({
-  router,
-  title,
-  canEdit,
-}: {
-  router: AppRouterInstance;
-  title: string;
-  canEdit?: boolean;
-}): ReactNode {
-  if (!canEdit) {
-    return null;
-  }
-  return (
-    <UploadButton
-      className={`duration-200 ut-button:transition-colors ut-button:bg-primary ut-allowed-content:text-bg-contrast ut-button:ut-readying:bg-primary-600 ut-button:ut-ready:hover:hover:bg-primary-600 ut-button:ut-uploading:after:bg-primary-400/25`}
-      endpoint="resultUploader"
-      onClientUploadComplete={(res) => {
-        console.log('Files: ', res);
-        alert('Sikeres feltöltés! (Szimulált)');
-        router.refresh();
-      }}
-      onUploadError={(error: Error) => {
-        console.error(`ERROR! ${error.message}`);
-        alert(`Hiba történt a feltöltés során: ${error.message}`);
-      }}
-      headers={{ resultType: encodeURIComponent(title) }}
-      content={{
-        button: ({ ready, uploadProgress, isUploading }) => {
-          if (uploadProgress) {
-            return `Feltöltés: ${uploadProgress}%`;
-          }
-          if (isUploading) {
-            return 'Folyamatban...';
-          }
-          if (ready) {
-            return 'Feltöltés';
-          }
-          return 'Kérlek várj...';
-        },
-        allowedContent: () => {
-          return 'Max. 8MB/fájl';
-        },
-      }}
-    />
-  );
 }
 
 function DeleteButton({
@@ -222,7 +174,6 @@ export default function XlsxTable({
         className={`relative flex h-svh grow flex-col overflow-auto shadow-md sm:rounded-lg lg:h-full lg:overflow-x-auto`}
       >
         <div className="flex flex-row items-center justify-end gap-6 px-6 py-2 text-bg-contrast">
-          <Upload title={title} router={router} canEdit={canEdit} />
           <DeleteButton xlsx={xlsx} router={router} canEdit={canEdit} />
           <button
             onClick={() => share(url, title)}
