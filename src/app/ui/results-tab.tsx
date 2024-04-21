@@ -20,7 +20,6 @@ import { Upload } from '@/app/ui/uploadthing';
 type Tab = {
   title: Result;
   icon: ReactNode;
-  content: (props: Readonly<{ canEdit?: boolean; results: ResultItem[] }>) => ReactNode;
 };
 
 function getResults(results: ResultItem[], canEdit?: boolean) {
@@ -45,16 +44,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Labdarúgás'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Úszás',
@@ -65,16 +54,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Úszás'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Futás',
@@ -85,16 +64,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Futás'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Asztalitenisz',
@@ -105,16 +74,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Asztalitenisz'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Súlylökés',
@@ -125,16 +84,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Súlylökés'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Darts',
@@ -145,16 +94,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Darts'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Kosárlabda',
@@ -165,16 +104,6 @@ const tabs: Tab[] = [
         stroke={1.5}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Kosárlabda'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
   {
     title: 'Csapatverseny',
@@ -185,16 +114,6 @@ const tabs: Tab[] = [
         icon={faPeopleGroup}
       />
     ),
-    content: ({ canEdit, results }) => {
-      return (
-        <>
-          <div className={`flex flex-row items-center justify-center p-1`}>
-            <Upload title={'Csapatverseny'} canEdit={canEdit} />
-          </div>
-          {getResults(results, canEdit)}
-        </>
-      );
-    },
   },
 ];
 
@@ -254,10 +173,10 @@ export default function ResultsTab({
         {tabs.map((tab) =>
           canShow ?
             <Tab.Panel key={tab.title} className={`flex flex-col gap-1`}>
-              {tab.content({
-                canEdit,
-                results: results.filter((x) => x.title === tab.title),
-              })}
+              <div className={`flex flex-row items-center justify-center pt-1`}>
+                <Upload title={tab.title} canEdit={canEdit} />
+              </div>
+              {getResults(results, canEdit)}
             </Tab.Panel>
           : null,
         )}
