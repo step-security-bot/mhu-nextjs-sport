@@ -2920,9 +2920,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:^0.30.8":
-  version: 0.30.8
-  resolution: "drizzle-orm@npm:0.30.8"
+"drizzle-orm@npm:^0.30.9":
+  version: 0.30.9
+  resolution: "drizzle-orm@npm:0.30.9"
   peerDependencies:
     "@aws-sdk/client-rds-data": ">=3"
     "@cloudflare/workers-types": ">=3"
@@ -3000,7 +3000,7 @@ __metadata:
       optional: true
     sqlite3:
       optional: true
-  checksum: 10/c01bc559f505935fc514a196db66030e729df2d18f3df31d1726c4c21c1d34e03fe5e3568a8d99aa921dd3941111e709aa6d9b90d227445f95c38449da32fafb
+  checksum: 10/c0709bc452e1027f965caa069cba4dc858b8113b7bfc74c0faf3b24ad7152ab3fc3002232b9530d97d2fe540bf29a69700aa3d36604adb43195881eddde7a710
   languageName: node
   linkType: hard
 
@@ -5090,7 +5090,7 @@ __metadata:
     autoprefixer: "npm:^10.4.19"
     cssnano: "npm:^6.1.2"
     drizzle-kit: "npm:^0.20.17"
-    drizzle-orm: "npm:^0.30.8"
+    drizzle-orm: "npm:^0.30.9"
     eslint: "npm:^8.57.0"
     eslint-config-next: "npm:14.2.2"
     eslint-plugin-tailwindcss: "npm:^3.15.1"
