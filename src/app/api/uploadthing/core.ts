@@ -29,7 +29,6 @@ export const ourFileRouter = {
         throw new UploadThingError('Ismeretlen eredménytípus');
       }
       const { authorized, userId } = await canEdit();
-      console.log('Authorized:', authorized, 'userId:', userId, 'resultType:', parsedResult.data);
 
       if (!authorized) {
         throw new UploadThingError('Nincs jogosultság a feltöltéshez');
