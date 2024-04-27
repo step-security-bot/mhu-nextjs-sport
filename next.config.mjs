@@ -105,7 +105,7 @@ const cspHeaders = {
   source: '/(.*)',
   headers: [
     {
-      key: 'Content-Security-Policy-Report-Only',
+      key: 'Content-Security-Policy',
       value: createCspHeaders(undefined).replace(/\n/g, ''),
     },
     {
