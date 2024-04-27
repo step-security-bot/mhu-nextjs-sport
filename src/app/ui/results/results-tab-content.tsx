@@ -26,7 +26,12 @@ export default function ResultsContent({ results, canEdit }: Readonly<{ results:
 
         return (
           <ResultsTable key={result.key} file={result.url} canEdit={canEdit} title={result.result} fileKey={result.key}>
-            <object data={result.url} type={result.type} className={`h-[36rem] w-full`} title={`PDF megjelenítő`}>
+            <object
+              data={result.url}
+              type={result.type}
+              className={`h-[36rem] w-full sm:h-svh`}
+              title={`PDF megjelenítő`}
+            >
               <iframe
                 title={`PDF megjelenítő`}
                 src={pdfIframe.toString()}
