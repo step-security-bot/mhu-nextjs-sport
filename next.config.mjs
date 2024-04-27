@@ -30,7 +30,7 @@ const reportUris = cspEndpoint.endpoints.map((endpoint) => new URL(endpoint.url)
 function createCspHeaders(nonce) {
   const defaultsCSPHeaders = `
     style-src 'self' 'unsafe-inline';
-    object-src 'none';
+    object-src https://utfs.io/;
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
@@ -52,7 +52,7 @@ function createCspHeaders(nonce) {
       script-src 'self' https://vercel.live/ https://vercel.com 'unsafe-inline';
       connect-src 'self' https://vercel.live/ https://vercel.com https://vitals.vercel-insights.com https://*.pusher.com/ wss://*.pusher.com/ https://utfs.io/ ${reportUris} https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/ https://uploadthing.com/api/serverCallback;
       img-src 'self' https://vercel.live/ https://vercel.com https://sockjs-mt1.pusher.com/ data: blob: ${imageSrc};
-      frame-src 'self' https://vercel.live/ https://vercel.com https://www.google.com/ https://utfs.io/;
+      frame-src 'self' https://vercel.live/ https://vercel.com https://www.google.com/;
       style-src-elem 'self' 'unsafe-inline' https://vercel.live/;
       manifest-src 'self';
       worker-src 'self' blob:;
@@ -79,7 +79,7 @@ function createCspHeaders(nonce) {
       img-src 'self' blob: data: ${imageSrc};
       connect-src 'self' https://vitals.vercel-insights.com ${reportUris} ${imageSrc} https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/ https://uploadthing.com/api/serverCallback;
       font-src 'self';
-      frame-src https://www.google.com/ https://utfs.io/;
+      frame-src https://www.google.com/;
       `;
   }
   // for dev environment enable unsafe-eval for hot-reload
@@ -97,7 +97,7 @@ function createCspHeaders(nonce) {
     img-src 'self' blob: data: ${imageSrc};
     connect-src 'self' ${reportUris} https://utfs.io/ https://uploadthing-prod-sea1.s3.us-west-2.amazonaws.com/ https://uploadthing.com/api/serverCallback;
     font-src 'self';
-    frame-src 'self' https://www.google.com/ https://utfs.io/;
+    frame-src 'self' https://www.google.com/;
   `;
 }
 
