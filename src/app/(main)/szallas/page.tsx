@@ -36,6 +36,7 @@ export default function Lodging() {
           </p>
           <div className={``}>
             <iframe
+              title={`Sandra Hotel`}
               className={`min-h-96 w-full border-0`}
               loading="lazy"
               allow={`fullscreen`}
@@ -74,6 +75,7 @@ export default function Lodging() {
           </p>
           <div>
             <iframe
+              title={`Hotel Bessenyei`}
               className={`min-h-96 w-full border-0`}
               loading="lazy"
               allow={`fullscreen`}
