@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const sportag: Result = 'Labdarúgás';
+  const sportag: Result = 'Csapatverseny';
   return (
     <main className="flex flex-col items-center justify-center bg-white dark:bg-gray-800">
       <Suspense key={sportag} fallback={<Skeleton />}>
