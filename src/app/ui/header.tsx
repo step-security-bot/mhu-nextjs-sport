@@ -70,7 +70,8 @@ function DialogLink({
     <Link
       href={href}
       onClick={onClick}
-      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 ${pathname === href ? 'bg-primary dark:bg-primary-600' : ''}`}
+      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 data-active:bg-primary data-active:dark:bg-primary-600`}
+      data-active={pathname === href}
     >
       {children}
     </Link>
@@ -89,7 +90,8 @@ function DisclosureMenu({
       {({ open }) => (
         <>
           <Disclosure.Button
-            className={`flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 ${items.some(({ href }) => href === pathname) ? 'bg-primary  dark:bg-primary-600' : ''}`}
+            className={`flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 data-active:bg-primary  data-active:dark:bg-primary-600`}
+            data-active={items.some(({ href }) => href === pathname)}
           >
             {title}
             <FontAwesomeIcon
@@ -105,7 +107,8 @@ function DisclosureMenu({
                 as={Link}
                 href={item.href}
                 onClick={onClick}
-                className={`block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 ${pathname === item.href ? 'bg-primary dark:bg-primary-600' : ''}`}
+                className={`block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 transition-colors duration-200 text-bg-contrast hover:bg-gray-50 data-active:bg-primary data-active:dark:bg-primary-600`}
+                data-active={pathname === item.href}
               >
                 {item.name}
               </Disclosure.Button>
@@ -122,7 +125,8 @@ function PopoverLink({ href, children }: Readonly<SimpleLink>) {
   return (
     <Link
       href={href}
-      className={`text-sm leading-6 transition-colors duration-200 hover:underline hover:decoration-primary hover:decoration-1 hover:text-bg-contrast/80 hover:dark:decoration-primary-400 ${pathname === href ? 'font-extrabold underline decoration-primary decoration-2 drop-shadow-lg text-primary dark:text-primary-600' : 'font-semibold text-bg-contrast'}`}
+      className={`text-sm font-semibold leading-6 transition-colors duration-200 text-bg-contrast hover:underline hover:decoration-primary hover:decoration-1 hover:text-bg-contrast/80 data-active:font-extrabold data-active:underline data-active:decoration-primary data-active:decoration-2 data-active:drop-shadow-lg data-active:text-primary hover:dark:decoration-primary-400 data-active:dark:text-primary-600`}
+      data-active={pathname === href || pathname.startsWith(href)}
     >
       {children}
     </Link>
@@ -135,7 +139,8 @@ function PopoverMenu({ title, items, callsToAction }: Readonly<DropDownLinks>) {
   return (
     <Popover className="relative">
       <Popover.Button
-        className={`${isActive ? 'font-extrabold underline decoration-primary decoration-2 drop-shadow-lg dark:text-primary-600' : 'font-semibold text-bg-contrast'} flex items-center gap-x-1 text-sm leading-6 text-primary`}
+        className={`flex items-center gap-x-1 text-sm font-semibold leading-6 text-bg-contrast data-active:font-extrabold data-active:underline data-active:decoration-primary data-active:decoration-2 data-active:drop-shadow-lg data-active:dark:text-primary-600`}
+        data-active={isActive}
       >
         {title}
         <FontAwesomeIcon

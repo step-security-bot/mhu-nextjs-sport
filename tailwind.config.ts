@@ -52,6 +52,9 @@ const config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    data: {
+      active: 'active="true"',
+    },
   },
   plugins: [typography, require('tailwindcss-oklch')(), headlessui],
 } satisfies Config;
