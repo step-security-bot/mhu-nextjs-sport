@@ -38,7 +38,7 @@ export default function Lodging() {
             <iframe
               className={`min-h-96 w-full border-0`}
               loading="lazy"
-              allowFullScreen={true}
+              allow={`fullscreen`}
               src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJSeMFrnefOEcRfHvxkjnMl70&key=${mapsApiKey}`}
             ></iframe>
           </div>
@@ -76,7 +76,7 @@ export default function Lodging() {
             <iframe
               className={`min-h-96 w-full border-0`}
               loading="lazy"
-              allowFullScreen={true}
+              allow={`fullscreen`}
               src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJSeMFrnefOEcRTc8ve48eU88&key=${mapsApiKey}`}
             ></iframe>
           </div>

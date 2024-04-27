@@ -66,7 +66,8 @@ function getResults(results: ResultItem[], canEdit?: boolean) {
                   src={pdfIframe.toString()}
                   loading={'eager'}
                   referrerPolicy={'no-referrer'}
-                  className={`h-dvh w-full`}
+                  className={`h-svh w-full`}
+                  allow={`fullscreen`}
                 >
                   <p className={`prose text-balance p-2 text-bg-contrast`}>
                     Ez az eszköz nem támogatja a PDF-ek megjelenítését. Kérjük, töltsd le a PDF-et:{' '}
