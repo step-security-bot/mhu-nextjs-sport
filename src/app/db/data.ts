@@ -1,8 +1,13 @@
 import { db } from '@/app/db/db';
-import { users } from '@/app/db/schema';
+import { results, users } from '@/app/db/schema';
 import { and, eq, ne } from 'drizzle-orm/sql/expressions/conditions';
 import { captureException } from '@sentry/nextjs';
-import { Result, ResultItem } from '@/app/lib/types';
+import { Result, ResultItem, resultTypeSchema } from '@/app/lib/types';
+import { z } from 'zod';
+import { desc } from 'drizzle-orm/sql/expressions/select';
+
+const insertResultSchema = z.object({ key: z.string(), result: Result, type: resultTypeSchema });
+type InsertResult = z.infer<typeof insertResultSchema>;
 
 export async function isAdmin(email: string): Promise<boolean> {
   try {
@@ -12,28 +17,24 @@ export async function isAdmin(email: string): Promise<boolean> {
     }
     return user.every((u) => u.isAdmin === 1);
   } catch (e) {
-    console.error(e);
     captureException(e);
   }
   return false;
 }
 
-export async function deleteResultByUrl(url: string): Promise<void> {
+export async function deleteResultByKey(key: string): Promise<void> {
   try {
-    console.log('Delete result in DB', url);
-    await Promise.resolve();
+    await db.update(results).set({ isDeleted: true, deletedAt: new Date() }).where(eq(results.key, key)).execute();
   } catch (e) {
-    console.error(e);
     captureException(e);
   }
 }
 
-export async function insertResult({ url, resultType }: { url: string; resultType: Result }): Promise<void> {
+export async function insertResult({ key, result, type }: InsertResult): Promise<void> {
   try {
-    console.log('Insert result into DB', url, resultType);
-    await Promise.resolve();
+    const parsed = insertResultSchema.parse({ key, result, type });
+    await db.insert(results).values(parsed).execute();
   } catch (e) {
-    console.error(e);
     captureException(e);
   }
 }
@@ -64,24 +65,24 @@ export async function updateAvatar({
       .returning({ updatedId: users.id });
     return returning[0] ?? { updatedId: '' };
   } catch (e) {
-    console.error(e);
     captureException(e);
   }
   return { updatedId: '' };
 }
 
-export async function getResultItems(): Promise<ResultItem[]> {
+export async function getResultItems(): Promise<Array<ResultItem>> {
   try {
-    await Promise.resolve();
-    return [
-      {
-        url: 'https://utfs.io/f/ddbfe101-56a4-48f6-84ce-48a24d090c44-nxmxdm.xlsx',
-        type: 'xlsx',
-        title: `Labdarúgás`,
-      },
-    ];
+    const result = await db
+      .select({ key: results.key, result: results.result, type: results.type })
+      .from(results)
+      .orderBy(desc(results.createdAt))
+      .where(eq(results.isDeleted, false))
+      .all();
+    if (result?.length === 0) {
+      return [];
+    }
+    return result;
   } catch (e) {
-    console.error(e);
     captureException(e);
   }
   return [];

@@ -4,25 +4,32 @@ import { auth } from '@/app/lib/auth';
 import { isAdmin } from '@/app/db/data';
 import { isNullOrEmpty } from '@/app/utils';
 import { uploadResult } from '@/app/lib/actions';
-import { Result } from '@/app/lib/types';
+import { Result, ResultType, resultTypeSchema } from '@/app/lib/types';
+import { FileRouterInputConfig } from '@uploadthing/shared';
+import { FileUploadData } from 'uploadthing/types';
 
 const f = createUploadthing();
+const fileSize = 8_000_000;
+const allowed = 'Csak xlsx és pdf fájlok tölthetőek fel';
+
+const resultUploader = {
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': {
+    maxFileSize: '8MB',
+  },
+  'application/pdf': {
+    maxFileSize: '8MB',
+  },
+} as const satisfies FileRouterInputConfig;
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
-  resultUploader: f({
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': {
-      maxFileSize: '8MB',
-    },
-    pdf: {
-      maxFileSize: '8MB',
-    },
-  })
+  resultUploader: f(resultUploader)
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req }) => {
+    .middleware(async ({ req, files }) => {
       // This code runs on your server before upload
       const headers = req.headers;
+      validateFiles(files);
       const resultType = decodeURIComponent(headers.get('resultType') ?? '');
       const parsedResult = Result.safeParse(resultType);
       if (!parsedResult.success) {
@@ -38,7 +45,7 @@ export const ourFileRouter = {
     })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
-      await uploadResult({ url: file.url, resultType: metadata.result });
+      await uploadResult({ key: file.key, result: metadata.result, type: file.type as ResultType });
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId, result: metadata.result };
     }),
@@ -46,7 +53,7 @@ export const ourFileRouter = {
 
 export type OurFileRouter = typeof ourFileRouter;
 
-async function canEdit(): Promise<{ authorized: boolean; userId: string | null }> {
+async function canEdit(): Promise<{ authorized: false; userId: string | null } | { authorized: true; userId: string }> {
   const session = await auth();
   const email = session?.user?.email;
   if (!isNullOrEmpty(email)) {
@@ -54,4 +61,21 @@ async function canEdit(): Promise<{ authorized: boolean; userId: string | null }
     return { authorized: admin, userId: email };
   }
   return { authorized: false, userId: null };
+}
+
+function validateFiles(files: Array<FileUploadData>) {
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const fileType = file?.type;
+    if (file?.size == null || file?.size > fileSize) {
+      throw new UploadThingError(`Túl nagy fájl: ${file?.name}`);
+    }
+    if (isNullOrEmpty(fileType)) {
+      throw new UploadThingError(`Ismeretlen fájltípus: ${file?.name}`);
+    }
+    const parsedResultType = resultTypeSchema.safeParse(fileType);
+    if (!parsedResultType.success) {
+      throw new UploadThingError(`${allowed}: ${file?.name}`);
+    }
+  }
 }
