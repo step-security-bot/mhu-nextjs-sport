@@ -76,6 +76,8 @@ export async function getResultItems(sportag: string): Promise<Array<ResultItem>
     const parsed = Result.safeParse(sportag);
     if (sportag !== '' && parsed.success) {
       where = and(where as never, eq(results.result, parsed.data));
+    } else {
+      return [];
     }
     const result = await db
       .select({ key: results.key, result: results.result, type: results.type })
