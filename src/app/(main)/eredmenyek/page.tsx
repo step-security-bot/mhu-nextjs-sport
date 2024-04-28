@@ -5,7 +5,7 @@ import Skeleton from '@/app/ui/skeleton';
 import { Result } from '@/app/lib/types';
 
 export const metadata: Metadata = {
-  title: 'Eredmények',
+  title: 'Csapatverseny eredmények',
 };
 
 export default function Page() {

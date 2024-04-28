@@ -4,17 +4,18 @@ import { Suspense } from 'react';
 import Skeleton from '@/app/ui/skeleton';
 import { Result } from '@/app/lib/types';
 
-export const metadata: Metadata = {
-  title: 'Eredmények',
-};
-
-export default function Page({
-  params,
-}: {
+type Props = {
   params?: {
     result?: string;
   };
-}) {
+};
+
+export function generateMetadata({ params }: Props): Metadata {
+  return {
+    title: `${decodeURIComponent(params?.result || ('Labdarúgás' as Result))} eredmények`,
+  };
+}
+export default function Page({ params }: Props) {
   const sportag = decodeURIComponent(params?.result || ('Labdarúgás' as Result));
   return (
     <main className="flex flex-col items-center justify-center bg-white dark:bg-gray-800">
