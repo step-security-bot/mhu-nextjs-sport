@@ -63,6 +63,9 @@ export const metadata: Metadata = {
       'https://sport.martossy.hu/screenshots/landing-mobile.webp',
     ],
   },
+  other: {
+    'darkreader-lock': 'true',
+  },
 };
 
 export default function RootLayout({
