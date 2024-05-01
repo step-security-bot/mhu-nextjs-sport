@@ -12,12 +12,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alexaka1/tailwindcss-oklch@npm:^0.0.0":
-  version: 0.0.0
-  resolution: "@alexaka1/tailwindcss-oklch@npm:0.0.0"
+"@alexaka1/tailwindcss-oklch@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "@alexaka1/tailwindcss-oklch@npm:0.0.2"
   dependencies:
     colorjs.io: "npm:^0.5.0"
-  checksum: 10/58c40970a7980f8ae66c72c8b00c2f1fae9364dcf5bca6487196142c7747b3ace00272a4c3e8cb4e78250c005e21cfbb8b538aba1f40ba816e2e93284108b98e
+  checksum: 10/1eed634746b42b1107f6e79928db57a7e13c2ee8ca881a3708f4411a9c735317ed50ae527633784f07c527d8e86daf7a805f5f78a690e882d90629aaf90f578f
   languageName: node
   linkType: hard
 
@@ -5310,7 +5310,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mhu-nextjs-sport@workspace:."
   dependencies:
-    "@alexaka1/tailwindcss-oklch": "npm:^0.0.0"
+    "@alexaka1/tailwindcss-oklch": "npm:^0.0.2"
     "@auth/core": "npm:^0.30.0"
     "@auth/drizzle-adapter": "npm:^1.0.1"
     "@fortawesome/fontawesome-svg-core": "npm:^6.5.2"
