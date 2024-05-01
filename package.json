@@ -49,6 +49,7 @@
     "zod": "^3.23.5"
   },
   "devDependencies": {
+    "@alexaka1/tailwindcss-oklch": "^0.0.0",
     "@sentry/utils": "^7.112.2",
     "@tailwindcss/typography": "^0.5.13",
     "@total-typescript/ts-reset": "^0.5.1",
@@ -70,7 +71,6 @@
     "prettier-plugin-tailwindcss": "^0.5.14",
     "serwist": "^9.0.2",
     "tailwindcss": "^3.4.3",
-    "tailwindcss-oklch": "^0.0.1",
     "tsx": "^4.8.2",
     "typescript": "^5.4.5"
   },

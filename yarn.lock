@@ -12,6 +12,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@alexaka1/tailwindcss-oklch@npm:^0.0.0":
+  version: 0.0.0
+  resolution: "@alexaka1/tailwindcss-oklch@npm:0.0.0"
+  dependencies:
+    colorjs.io: "npm:^0.5.0"
+  checksum: 10/58c40970a7980f8ae66c72c8b00c2f1fae9364dcf5bca6487196142c7747b3ace00272a4c3e8cb4e78250c005e21cfbb8b538aba1f40ba816e2e93284108b98e
+  languageName: node
+  linkType: hard
+
 "@alloc/quick-lru@npm:^5.2.0":
   version: 5.2.0
   resolution: "@alloc/quick-lru@npm:5.2.0"
@@ -2563,10 +2572,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorjs.io@npm:^0.4.5":
-  version: 0.4.5
-  resolution: "colorjs.io@npm:0.4.5"
-  checksum: 10/0860f31e62a25d1df53d776797c632f7debe880a3c73193025df5359e70b7d72f0ba6932c12ac1486e70367228ee2ef8c1f20a7ba6a2cb6ff35b6b9eb4deede6
+"colorjs.io@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "colorjs.io@npm:0.5.0"
+  checksum: 10/ac8a29e08a47be7806da1153da9dd1842d0554285597756b79bd7580ee1c092bb9ef3e51e422faa8f306b8be24cb14fea2c27aa24258555cc0801a0578e7e867
   languageName: node
   linkType: hard
 
@@ -5301,6 +5310,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mhu-nextjs-sport@workspace:."
   dependencies:
+    "@alexaka1/tailwindcss-oklch": "npm:^0.0.0"
     "@auth/core": "npm:^0.30.0"
     "@auth/drizzle-adapter": "npm:^1.0.1"
     "@fortawesome/fontawesome-svg-core": "npm:^6.5.2"
@@ -5349,7 +5359,6 @@ __metadata:
     react-dom: "npm:^18.3.1"
     serwist: "npm:^9.0.2"
     tailwindcss: "npm:^3.4.3"
-    tailwindcss-oklch: "npm:^0.0.1"
     tsx: "npm:^4.8.2"
     typescript: "npm:^5.4.5"
     uploadthing: "npm:^6.10.1"
@@ -7318,15 +7327,6 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.24.1"
   checksum: 10/cf3b126bee82bc9ff3f60f9601b66925418db6906544198b637487b25fba1c9c307734ca37ccb8fa2355f69ad0c5aff34c5dce460809addb459a93205d9a0abe
-  languageName: node
-  linkType: hard
-
-"tailwindcss-oklch@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "tailwindcss-oklch@npm:0.0.1"
-  dependencies:
-    colorjs.io: "npm:^0.4.5"
-  checksum: 10/272fed48008e977905562fbfc665461e91144168cb8b37bcbd3fd236bcb01e4888397bfc3b6e29d0d98c0dfdd06d12b02a0d2259cc4b6fb523fc4dd758ee294d
   languageName: node
   linkType: hard
 
