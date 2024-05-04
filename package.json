@@ -2,7 +2,7 @@
   "name": "mhu-nextjs-sport",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
+  "packageManager": "pnpm@9.1.0-0+sha256.c557b24d2298d9b5e3be7086ebf55a28253b008324d545f72645a6de89844102",
   "scripts": {
     "dev": "next dev",
     "dev:sw": "next dev --experimental-https",
@@ -12,7 +12,7 @@
     "lint:fix": "next lint --fix",
     "fmt": "prettier --check . --experimental-ternaries",
     "fmt:fix": "prettier --write . --experimental-ternaries",
-    "doctor": "yarn dlx @yarnpkg/doctor",
+    "doctor": "pnpm doctor",
     "migrations": "drizzle-kit generate:sqlite",
     "migrations:up": "tsx --env-file=.env src/app/db/migrate.ts"
   },
@@ -87,7 +87,7 @@
   "engineStrict": true,
   "engines": {
     "node": "^20.0.0",
-    "yarn": "^4.1.1",
+    "pnpm": "^9.0.0",
     "npm": "Please use Yarn to install dependencies. 'yarn install'"
   }
 }
