@@ -13,10 +13,10 @@ export default function Page() {
           <p className={`p-1 pt-4`}>
             A sporttalálkozó rendezésével és szervezésével kapcsolatos bármilyen kérdés vagy probléma esetén forduljatok
             elsődlegesen{' '}
-            <span className={`inline-block max-w-full text-balance font-medium`}>dr. Mészáros Attilához</span> a{' '}
-            <a href="tel:***REMOVED***">***REMOVED***</a> telefonszámon, vagy a{' '}
-            <a href={`mailto:***REMOVED***`}>***REMOVED***</a> e-mail címen. A helyszínen a kijelölt
-            csapatfelelősökhöz, a sporttal kapcsolatos kérdésekben pedig a helyszínen a sportági felelősökhöz.
+            <span className={`inline-block max-w-full text-balance font-medium`}>dr. Mészáros Attilához</span> az ismert
+            telefonszámon, vagy a <a href={`mailto:***REMOVED***`}>***REMOVED***</a> e-mail címen. A
+            helyszínen a kijelölt csapatfelelősökhöz, a sporttal kapcsolatos kérdésekben pedig a helyszínen a sportági
+            felelősökhöz.
           </p>
         </EntryContent>
       </div>
