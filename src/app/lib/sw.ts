@@ -25,21 +25,21 @@ const serwist = new Serwist({
 serwist.addEventListeners();
 // Put your service worker logic here. https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
 isSupported()
-  .then((supported) => {
+  .then(async (supported) => {
     console.log('Firebase Messaging is supported: ', supported);
     if (supported) {
       const messaging = getMessaging(app);
-      getToken(messaging, {
+      await getToken(messaging, {
         vapidKey: process.env['NEXT_PUBLIC_VAPID_PUBLIC_KEY'],
         serviceWorkerRegistration: self.registration,
-      }).then();
+      });
       onBackgroundMessage(messaging, (payload) => {
         console.log('Message received in service worker', payload);
-        const notificationTitle = 'Background Message Title';
-        const notificationOptions = {
-          body: 'Background Message body.',
-          icon: '/icons/report-analytics.svg',
-        } satisfies NotificationOptions;
+        // const notificationTitle = 'Background Message Title';
+        // const notificationOptions = {
+        //   body: 'Background Message body.',
+        //   icon: '/icons/report-analytics.svg',
+        // } satisfies NotificationOptions;
 
         // self.registration.showNotification(notificationTitle, notificationOptions).catch((error) => {
         //   console.error('Notification registration failed: ', error);
