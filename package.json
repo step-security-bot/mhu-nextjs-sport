@@ -2,7 +2,7 @@
   "name": "mhu-nextjs-sport",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@4.1.1+sha256.f3cc0eda8e5560e529c7147565b30faa43b4e472d90e8634d7134a37c7f59781",
+  "packageManager": "yarn@4.2.2+sha256.1aa43a5304405be7a7cb9cb5de7b97de9c4e8ddd3273e4dad00d6ae3eb39f0ef",
   "scripts": {
     "dev": "next dev",
     "dev:sw": "next dev --experimental-https",
@@ -76,7 +76,7 @@
     "prettier-plugin-tailwindcss": "^0.5.14",
     "serwist": "^9.0.2",
     "tailwindcss": "^3.4.3",
-    "tsx": "^4.9.5",
+    "tsx": "^4.10.0",
     "typescript": "^5.4.5"
   },
   "dependenciesMeta": {

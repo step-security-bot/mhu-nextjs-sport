@@ -14,9 +14,8 @@ export default function Page() {
             A sporttalálkozó rendezésével és szervezésével kapcsolatos bármilyen kérdés vagy probléma esetén forduljatok
             elsődlegesen{' '}
             <span className={`inline-block max-w-full text-balance font-medium`}>dr. Mészáros Attilához</span> az ismert
-            telefonszámon, vagy a <a href={`mailto:***REMOVED***`}>***REMOVED***</a> e-mail címen. A
-            helyszínen a kijelölt csapatfelelősökhöz, a sporttal kapcsolatos kérdésekben pedig a helyszínen a sportági
-            felelősökhöz.
+            telefonszámon, vagy az ismert e-mail címen. A helyszínen a kijelölt csapatfelelősökhöz, a sporttal
+            kapcsolatos kérdésekben pedig a helyszínen a sportági felelősökhöz.
           </p>
         </EntryContent>
       </div>
