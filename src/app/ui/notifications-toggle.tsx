@@ -42,16 +42,19 @@ export default function NotificationsToggle() {
         // todo unsubscribe
         await subscribed?.unsubscribe();
         setNotifications(false);
+        alert('Értesítések kikapcsolva.');
         return true;
       }
       const permission = await Notification.requestPermission();
       if (permission !== 'granted') {
         setNotifications(false);
+        alert('Értesítések elutasítva.');
         return false;
       }
       if (subscribed) {
         // we can return
         setNotifications(true);
+        alert('Feliratkozva');
         return true;
       }
 
@@ -64,9 +67,13 @@ export default function NotificationsToggle() {
       //   applicationServerKey: urlBase64ToUint8Array(token, window),
       // });
       setNotifications(true);
+      alert('FCM regisztrálva');
       return true;
     } catch (e) {
       console.error(e);
+      if (e instanceof Error) {
+        alert(e.message);
+      }
     }
     setNotifications(false);
     return false;
