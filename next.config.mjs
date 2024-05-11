@@ -105,7 +105,7 @@ const cspHeaders = {
   source: '/(.*)',
   headers: [
     {
-      key: process.env.NODE_ENV === 'production' ? 'Content-Security-Policy' : 'Content-Security-Policy-Report-Only',
+      key: process.env.VERCEL_ENV === 'production' ? 'Content-Security-Policy' : 'Content-Security-Policy-Report-Only',
       value: createCspHeaders(undefined).replace(/\n/g, ''),
     },
     {
