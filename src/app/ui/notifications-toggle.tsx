@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faBellSlash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { env } from '@/app/lib/env';
-import { urlBase64ToUint8Array } from '@/app/lib/utils';
 import { getToken, Messaging, onMessage } from 'firebase/messaging';
 import { app } from '@/app/lib/firebase';
 import { getMessaging } from '@firebase/messaging';
@@ -56,7 +55,7 @@ export default function NotificationsToggle() {
         return true;
       }
 
-      const token = await getToken(messaging!, {
+      /*const token =*/ await getToken(messaging!, {
         vapidKey: env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
         serviceWorkerRegistration: registration,
       });
