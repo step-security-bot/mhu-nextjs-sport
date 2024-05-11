@@ -35,16 +35,15 @@ isSupported()
       }).then();
       onBackgroundMessage(messaging, (payload) => {
         console.log('Message received in service worker', payload);
-        // ...
         const notificationTitle = 'Background Message Title';
         const notificationOptions = {
           body: 'Background Message body.',
           icon: '/icons/report-analytics.svg',
         } satisfies NotificationOptions;
 
-        self.registration.showNotification(notificationTitle, notificationOptions).catch((error) => {
-          console.error('Notification registration failed: ', error);
-        });
+        // self.registration.showNotification(notificationTitle, notificationOptions).catch((error) => {
+        //   console.error('Notification registration failed: ', error);
+        // });
       });
     }
   })
