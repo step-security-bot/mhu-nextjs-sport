@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faXTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons/faYoutube';
 import DarkModeToggle from '@/app/ui/dark-mode-toggle';
+import NotificationsToggle from '@/app/ui/notifications-toggle';
 
 export default function Footer() {
   return (
@@ -22,7 +23,10 @@ export default function Footer() {
               Ez a weboldal egy hobbi projekt keretében készült. Nem hivatalos. Nem kapcsolódik semmilyen hivatalos
               szervezethez. A forráskód elérhető a GitHub-on.
             </p>
-            <DarkModeToggle />
+            <div className={`flex flex-row gap-2`}>
+              <DarkModeToggle />
+              <NotificationsToggle />
+            </div>
           </div>
 
           <ul className="mt-8 flex flex-wrap justify-center gap-6 sm:mt-0 sm:flex-nowrap sm:justify-end">
