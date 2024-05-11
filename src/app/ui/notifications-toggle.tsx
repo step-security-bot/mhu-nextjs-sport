@@ -21,6 +21,7 @@ export default function NotificationsToggle() {
     // if (notifications) {
     onMessage(messaging, (payload) => {
       console.log('Message received in react', payload);
+      alert(`Message received in react ${payload.notification?.title} ${payload.notification?.body}`);
       // ...
     });
     // }
