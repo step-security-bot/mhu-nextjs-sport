@@ -2,27 +2,29 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faBellSlash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import { env } from '@/app/lib/env';
-import { getToken, Messaging, onMessage } from 'firebase/messaging';
-import { app } from '@/app/lib/firebase';
-import { getMessaging } from '@firebase/messaging';
+// import { env } from '@/app/lib/env';
+// import { getToken, Messaging, onMessage } from 'firebase/messaging';
+// import { app } from '@/app/lib/firebase';
+// import { getMessaging } from '@firebase/messaging';
+import useFcm from '@/app/ui/hooks/useFcm';
 
 export default function NotificationsToggle() {
   const [notifications, setNotifications] = useState(false);
+  const fcm = useFcm({ shouldRequestNotifications: notifications });
   const [mounted, setMounted] = useState(false);
-  const [messaging, setMessaging] = useState<Messaging | null>(null);
+  // const [messaging, setMessaging] = useState<Messaging | null>(null);
 
   useEffect(() => {
     setMounted(true);
     Notification.permission === 'granted' ? setNotifications(true) : setNotifications(false);
-    const messaging = getMessaging(app);
-    setMessaging(messaging);
-    // if (notifications) {
-    onMessage(messaging, (payload) => {
-      console.log('Message received in react', payload);
-      alert(`Message received in react ${payload.notification?.title} ${payload.notification?.body}`);
-      // ...
-    });
+    // const messaging = getMessaging(app);
+    // setMessaging(messaging);
+    // // if (notifications) {
+    // onMessage(messaging, (payload) => {
+    //   console.log('Message received in react', payload);
+    //   alert(`Message received in react ${payload.notification?.title} ${payload.notification?.body}`);
+    //   // ...
+    // });
     // }
   }, []);
 
@@ -45,27 +47,29 @@ export default function NotificationsToggle() {
         alert('Értesítések kikapcsolva.');
         return true;
       }
-      const permission = await Notification.requestPermission();
-      if (permission !== 'granted') {
-        setNotifications(false);
-        alert('Értesítések elutasítva.');
-        return false;
-      }
-      if (subscribed) {
-        // we can return
-        setNotifications(true);
-        alert('Feliratkozva');
-        return true;
-      }
+      // const permission = await Notification.requestPermission();
+      // if (permission !== 'granted') {
+      //   setNotifications(false);
+      //   alert('Értesítések elutasítva.');
+      //   return false;
+      // }
+      // if (subscribed) {
+      //   // we can return
+      //   setNotifications(true);
+      //   alert('Feliratkozva');
+      //   return true;
+      // }
 
-      /*const token =*/ await getToken(messaging!, {
-        vapidKey: env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-        serviceWorkerRegistration: registration,
-      });
+      /*const token =*/
+      // await getToken(messaging!, {
+      //   vapidKey: env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+      //   serviceWorkerRegistration: registration,
+      // });
       // const subscription = await registration.pushManager.subscribe({
       //   userVisibleOnly: true,
       //   applicationServerKey: urlBase64ToUint8Array(token, window),
       // });
+
       setNotifications(true);
       alert('FCM regisztrálva');
       return true;
