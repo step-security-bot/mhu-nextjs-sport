@@ -69,7 +69,7 @@ export default function Page() {
             <span className={`inline-block max-w-full text-balance font-bold uppercase`}>
               Stoplis cipő használata tilos!
             </span>{' '}
-            A mérkőzések kétszer <span className={`underline decoration-from-font`}>2 &times; 12 percig tartanak</span>,{' '}
+            Up A mérkőzések <span className={`underline decoration-from-font`}>2 &times; 12 percig tartanak</span>,{' '}
             <span className={`italic`}>
               a csapatok 5 fő mezőnyjátékosból és 1 fő kapusból, továbbá mérkőzésenként maximum 4 fő cserejátékosból
               állnak.
@@ -224,7 +224,7 @@ export default function Page() {
             <DataListEntry>
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Második futam</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
-                <ol>
+                <ol start={5}>
                   <li className={``}>Főváros</li>
                   <li className={``}>Hajdú-Bihar</li>
                   <li className={``}>Heves-Nógrád</li>
@@ -235,7 +235,7 @@ export default function Page() {
             <DataListEntry>
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Harmadik futam</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
-                <ol>
+                <ol start={9}>
                   <li className={``}>Központi Nyomozó Főügyészség</li>
                   <li className={``}>Legfőbb Ügyészség</li>
                   <li className={``}>Pest</li>
@@ -488,7 +488,7 @@ export default function Page() {
             <DataListEntry>
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Helyszín</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
-                Nyíregyházi Egyetem Kollégium földszint
+                Nyíregyházi Egyetem Campus étterem (az esti rendezvény helyszíne)
               </dd>
             </DataListEntry>
             <DataListEntry>
@@ -511,9 +511,6 @@ export default function Page() {
             A női és férfi versenyzők külön-külön versenyeznek és eredményeik a csapatpontszámba külön-külön számítanak
             be. Egységes versenykiírás vonatkozik mindkét nemre.
           </p>
-          <p>
-            A verseny sorsolása azonos a labdarúgáséval, lebonyolítása pedig a sportcsarnokban rendezett sportágakéval.
-          </p>
           <p>A versenyhez két tábla áll rendelkezésre, egy a férfiak, egy a nők részére.</p>
           <p>
             Női és férfi versenyzőnként egy meccs 12 sorozatnyi (1 sorozat 3 nyíl) dobásból áll. 301-ről kezdődő sima
@@ -522,20 +519,42 @@ export default function Page() {
             második játékos még ledobja a saját körét és ez alapján állapítjuk meg a parti eredményét. Pontegyenlőség
             esetén a már ledobott pontszámon kívül plusz egy dobás, aki nagyobbat dob, az nyer.
           </p>
-          <ol>
-            <li>Csongrád</li>
-            <li>Hajdú</li>
-            <li>Szabolcs</li>
-            <li>Bács</li>
-            <li>Pest</li>
-            <li>Békés</li>
-            <li>Központi Nyomozó Főügyészség</li>
-            <li>Szolnok</li>
-            <li>Legfőbb Ügyészség</li>
-            <li>Heves-Nógrád</li>
-            <li>Borsod-Abaúj</li>
-            <li>Főváros</li>
-          </ol>
+          <p>A verseny sorsolása az alábbi:</p>
+          <DataList>
+            <DataListEntry>
+              <dt className="font-bold text-gray-900 dark:text-bg-contrast">A csoport</dt>
+              <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
+                <ol>
+                  <li>Csongrád</li>
+                  <li>Hajdú</li>
+                  <li>Szabolcs</li>
+                  <li>Bács</li>
+                </ol>
+              </dd>
+            </DataListEntry>
+            <DataListEntry>
+              <dt className="font-bold text-gray-900 dark:text-bg-contrast">B csoport</dt>
+              <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
+                <ol start={5}>
+                  <li>Pest </li>
+                  <li>Békés</li>
+                  <li>Központi Nyomozó Főügyészség</li>
+                  <li>Szolnok</li>
+                </ol>
+              </dd>
+            </DataListEntry>
+            <DataListEntry>
+              <dt className="font-bold text-gray-900 dark:text-bg-contrast">C csoport</dt>
+              <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
+                <ol start={9}>
+                  <li>Legfőbb Ügyészség</li>
+                  <li>Heves-Nógrád</li>
+                  <li>Borsod</li>
+                  <li>Főváros</li>
+                </ol>
+              </dd>
+            </DataListEntry>
+          </DataList>
           <p>Három csoport győztese a döntőben mérkőzik.</p>
         </EntryContent>
         <Media src={'https://source.unsplash.com/red-white-and-black-round-wheel-RjqCk9MqhNg'} alt={'Darts'} />
