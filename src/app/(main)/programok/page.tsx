@@ -29,11 +29,13 @@ export default function Page() {
           <Grid>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>
-                <time dateTime={`2024-06-28T10:30:00`}>10:30</time> -{' '}
+                <time dateTime={`2024-06-28T10:30:00`}>10:00</time> -{' '}
                 <time dateTime={`2024-06-28T12:00:00`}>12:00</time>
               </h3>
               <p className={`text-balance text-base`}>Érkezés, szállás elfoglalása és regisztráció.</p>
-              <h2>Vármegye felelősök</h2>
+              <p className={`text-balance text-base`}>
+                A vármegye felelősök segítenek az érkező csapatoknak a regisztrációban és a szállás elfoglalásában:
+              </p>
               <ul className={`grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-1`}>
                 <li>
                   Békés: <span className={`inline-block max-w-full text-balance`}>Horváth Mihály</span>,{' '}
