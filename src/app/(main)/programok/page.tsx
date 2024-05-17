@@ -23,43 +23,6 @@ export default function Page() {
       <main
         className={`prose prose-sm m-auto box-border max-w-7xl p-2 dark:text-bg-contrast dark:prose-headings:text-bg-contrast`}
       >
-        <h2>Vármegye felelősök</h2>
-        <ul className={`grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-1`}>
-          <li>
-            Békés: <span className={`inline-block max-w-full text-balance`}>Horváth Mihály</span>
-          </li>
-          <li>
-            Bács: <span className={`inline-block max-w-full text-balance`}>Aranyosi János</span>
-          </li>
-          <li>
-            Borsod: <span className={`inline-block max-w-full text-balance`}>Vass Vivien</span>
-          </li>
-          <li>
-            Csongrád: <span className={`inline-block max-w-full text-balance`}>Csillám Enikő</span>
-          </li>
-          <li>
-            Főváros: <span className={`inline-block max-w-full text-balance`}>Birta Aliz</span>
-          </li>
-          <li>
-            Hajdú: <span className={`inline-block max-w-full text-balance`}>Kazuska Melinda</span>
-          </li>
-          <li>
-            Heves-Nógrád: <span className={`inline-block max-w-full text-balance`}>Doroginé Szegedi Klára</span>
-          </li>
-          <li>
-            Szolnok: <span className={`inline-block max-w-full text-balance`}>Szlávik Emese</span>,{' '}
-            <span className={`inline-block max-w-full text-balance`}>Balogh Emese</span>
-          </li>
-          <li>
-            KNYF: <span className={`inline-block max-w-full text-balance`}>Buss Emese</span>
-          </li>
-          <li>
-            LÜ: <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>
-          </li>
-          <li>
-            Pest: <span className={`inline-block max-w-full text-balance`}>Visóczki Éva</span>
-          </li>
-        </ul>
         <h1 className={`dark:text-bg-contrast`}>Programok - 2024</h1>
         <section>
           <h2 className={`font-medium`}>Június 28. péntek</h2>
@@ -70,6 +33,44 @@ export default function Page() {
                 <time dateTime={`2024-06-28T12:00:00`}>12:00</time>
               </h3>
               <p className={`text-balance text-base`}>Érkezés, szállás elfoglalása és regisztráció.</p>
+              <h2>Vármegye felelősök</h2>
+              <ul className={`grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-1`}>
+                <li>
+                  Békés: <span className={`inline-block max-w-full text-balance`}>Horváth Mihály</span>,{' '}
+                  <span className={`inline-block max-w-full text-balance`}>Tóth Adél</span>
+                </li>
+                <li>
+                  Bács: <span className={`inline-block max-w-full text-balance`}>Aranyosi János</span>
+                </li>
+                <li>
+                  Borsod: <span className={`inline-block max-w-full text-balance`}>Vass Vivien</span>
+                </li>
+                <li>
+                  Csongrád: <span className={`inline-block max-w-full text-balance`}>Csillám Enikő</span>
+                </li>
+                <li>
+                  Főváros: <span className={`inline-block max-w-full text-balance`}>Birta Aliz</span>
+                </li>
+                <li>
+                  Hajdú: <span className={`inline-block max-w-full text-balance`}>Kazuska Melinda</span>
+                </li>
+                <li>
+                  Heves-Nógrád: <span className={`inline-block max-w-full text-balance`}>Doroginé Szegedi Klára</span>
+                </li>
+                <li>
+                  Szolnok: <span className={`inline-block max-w-full text-balance`}>Szlávik Emese</span>,{' '}
+                  <span className={`inline-block max-w-full text-balance`}>Balogh Emese</span>
+                </li>
+                <li>
+                  KNYF: <span className={`inline-block max-w-full text-balance`}>Buss Emese</span>
+                </li>
+                <li>
+                  LÜ: <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>
+                </li>
+                <li>
+                  Pest: <span className={`inline-block max-w-full text-balance`}>Visóczki Éva</span>
+                </li>
+              </ul>
             </Entry>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>

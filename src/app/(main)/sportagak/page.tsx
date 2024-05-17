@@ -596,7 +596,8 @@ export default function Page() {
               <dt className="font-medium text-gray-900 dark:text-bg-contrast">Sportág felelős</dt>
               <dd className="mt-2 text-sm text-gray-500 dark:text-bg-contrast/80">
                 <ul>
-                  <li className={`inline-block`}>Birta Alíz</li>
+                  <li>Birta Alíz</li>
+                  <li>Tóth Adél</li>
                 </ul>
               </dd>
             </DataListEntry>
