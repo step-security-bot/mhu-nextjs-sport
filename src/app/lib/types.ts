@@ -16,6 +16,7 @@ export type Result = z.infer<typeof Result>;
 export const resultTypeSchema = z.enum([
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   'application/pdf',
+  'image',
 ] as const);
 export type ResultType = z.infer<typeof resultTypeSchema>;
 export type ResultItem = { key: string; type: ResultType; result: Result; url?: string };
