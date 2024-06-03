@@ -30,24 +30,26 @@ export default function ResultsContent({ results, canEdit }: Readonly<{ results:
             <object
               data={result.url}
               type={result.type}
-              className={`h-[36rem] w-full sm:h-svh`}
+              className={`flex h-[36rem] w-full flex-col sm:h-svh`}
               title={`PDF megjelenítő`}
             >
               <iframe
                 title={`PDF megjelenítő`}
                 src={pdfIframe.toString()}
                 loading={'eager'}
-                referrerPolicy={'no-referrer'}
                 className={`size-full`}
                 allow={`fullscreen`}
               ></iframe>
-              <p className={`prose text-balance p-2 text-bg-contrast`}>
-                Ez az eszköz nem támogatja a PDF-ek megjelenítését. Ha a szöveg felett nem jelent meg semmi, akkor
-                próbáld meg{' '}
+              <p className="prose text-balance p-0.5 text-sm text-bg-contrast">
+                Ez az eszköz nem támogatja a PDF-ek megjelenítését{' '}
+                <span className={`hidden browser:inline-block`}>böngészőben</span>
+                <span className={`hidden standalone:inline-block`}>progresszív web alkalmazásban</span>. Helyette a
+                Google Docs Viewer van használva. Ez külső szolgáltatás, ezért ha nem jelenik meg semmi, akkor másik
+                fülre lapozással újra próbálhatod, vagy próbáld meg{' '}
                 <a className={`decoration-primary text-primary dark:text-primary-400`} href={result.url}>
                   letölteni a PDF-et
                 </a>
-                .
+                , vagy nyisd meg asztali webböngészőben.
               </p>
             </object>
           </ResultsTable>
