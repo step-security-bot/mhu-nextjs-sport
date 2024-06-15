@@ -58,10 +58,12 @@ export default function ResultsContent({ results, canEdit }: Readonly<{ results:
       default:
         return (
           <ResultsTable key={result.key} file={result.url} canEdit={canEdit} title={result.result} fileKey={result.key}>
-            <ZoomWrapper>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img alt={result.url} src={result.url} className={`size-auto`} />
-            </ZoomWrapper>
+            <div className={`sm:mx-auto`}>
+              <ZoomWrapper>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img alt={result.url} src={result.url} className={`size-auto`} />
+              </ZoomWrapper>
+            </div>
           </ResultsTable>
         );
     }
