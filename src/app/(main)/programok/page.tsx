@@ -67,7 +67,7 @@ export default function Page() {
                 </li>
                 <li>
                   LÜ: <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>,{' '}
-                  <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>
+                  <span className={`inline-block max-w-full text-balance`}>Hegedűs Judit</span>
                 </li>
                 <li>
                   Pest: <span className={`inline-block max-w-full text-balance`}>Visóczki Éva</span>
