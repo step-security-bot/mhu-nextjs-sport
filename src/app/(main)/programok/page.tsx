@@ -29,8 +29,7 @@ export default function Page() {
           <Grid>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>
-                <time dateTime={`2024-06-28T10:30:00`}>10:00</time> -{' '}
-                <time dateTime={`2024-06-28T12:00:00`}>12:00</time>
+                <time dateTime={`2024-06-28T10:30:00`}>10:00</time>- <time dateTime={`2024-06-28T12:00:00`}>12:00</time>
               </h3>
               <p className={`text-balance text-base`}>Érkezés, szállás elfoglalása és regisztráció.</p>
               <p className={`text-balance text-base`}>
@@ -67,10 +66,15 @@ export default function Page() {
                   KNYF: <span className={`inline-block max-w-full text-balance`}>Buss Emese</span>
                 </li>
                 <li>
-                  LÜ: <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>
+                  LÜ: <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>,{' '}
+                  <span className={`inline-block max-w-full text-balance`}>Zeleiné Vajkó Edit</span>
                 </li>
                 <li>
                   Pest: <span className={`inline-block max-w-full text-balance`}>Visóczki Éva</span>
+                </li>
+                <li>
+                  Szabolcs-Szatmár-Bereg:{' '}
+                  <span className={`inline-block max-w-full text-balance`}>Mészáros Attila</span>
                 </li>
               </ul>
             </Entry>
@@ -128,8 +132,7 @@ export default function Page() {
             </Entry>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>
-                <time dateTime={`2024-06-28T18:00:00`}>18:00</time> -{' '}
-                <time dateTime={`2024-06-28T20:00:00`}>20:00</time>
+                <time dateTime={`2024-06-28T18:00:00`}>18:00</time>- <time dateTime={`2024-06-28T20:00:00`}>20:00</time>
               </h3>
               <p className={`text-balance text-base`}>Vacsora</p>
             </Entry>
@@ -152,13 +155,13 @@ export default function Page() {
           <Grid>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>
-                <time dateTime={`2024-06-29T07:00:00`}>7:00</time> - <time dateTime={`2024-06-29T09:00:00`}>9:00</time>
+                <time dateTime={`2024-06-29T07:00:00`}>7:00</time>- <time dateTime={`2024-06-29T09:00:00`}>9:00</time>
               </h3>
               <p className={`text-balance text-base`}>Reggeli.</p>
             </Entry>
             <Entry>
               <h3 className={`mx-0.5 my-0 font-medium`}>
-                <time dateTime={`2024-06-29T09:00:00`}>9:00</time> - <time dateTime={`2024-06-29T11:00:00`}>11:00</time>
+                <time dateTime={`2024-06-29T09:00:00`}>9:00</time>- <time dateTime={`2024-06-29T11:00:00`}>11:00</time>
               </h3>
               <p className={`text-balance text-base`}>Úszás - egyetemi uszoda.</p>
             </Entry>
